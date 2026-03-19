@@ -4,15 +4,7 @@ import { Link } from "react-router-dom";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import ShoppingBag from "./ShoppingBag";
-
-interface CartItem {
-  id: number;
-  name: string;
-  price: string;
-  image: string;
-  quantity: number;
-  category: string;
-}
+import { useCart } from "@/contexts/CartContext";
 
 const Navigation = () => {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
@@ -20,48 +12,9 @@ const Navigation = () => {
   const [offCanvasType, setOffCanvasType] = useState<'favorites' | null>(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isShoppingBagOpen, setIsShoppingBagOpen] = useState(false);
-  
-  // Shopping bag state with 3 mock items
-  const [cartItems, setCartItems] = useState<CartItem[]>([
-    {
-      id: 1,
-      name: "Classic Cotton T-Shirt",
-      price: "GH₵85",
-      image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab",
-      quantity: 1,
-      category: "Tops"
-    },
-    {
-      id: 7,
-      name: "Classic Blue Jeans",
-      price: "GH₵320", 
-      image: "https://images.unsplash.com/photo-1542272604-787c62d465d1",
-      quantity: 1,
-      category: "Bottoms"
-    },
-    {
-      id: 13,
-      name: "Casual Day Dress",
-      price: "GH₵280",
-      image: "https://images.unsplash.com/photo-1595889951946-c74c6f7ad1db", 
-      quantity: 1,
-      category: "Dresses"
-    }
-  ]);
+  const { cartItems, updateQuantity, favorites } = useCart();
 
   const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
-  
-  const updateQuantity = (id: number, newQuantity: number) => {
-    if (newQuantity <= 0) {
-      setCartItems(items => items.filter(item => item.id !== id));
-    } else {
-      setCartItems(items => 
-        items.map(item => 
-          item.id === id ? { ...item, quantity: newQuantity } : item
-        )
-      );
-    }
-  };
   
   // Preload dropdown images for faster display
   useEffect(() => {
@@ -405,10 +358,31 @@ const Navigation = () => {
             </div>
             
             {/* Content */}
-            <div className="p-6">
-              <p className="text-muted-foreground text-sm mb-6">
-                You haven't added any favorites yet. Browse our collection and click the heart icon to save items you love.
-              </p>
+            <div className="flex-1 overflow-y-auto">
+              {favorites.length === 0 ? (
+                <div className="p-6">
+                  <p className="text-muted-foreground text-sm mb-6">
+                    You haven't added any favorites yet. Browse our collection and click the heart icon to save items you love.
+                  </p>
+                </div>
+              ) : (
+                <div className="p-6 space-y-4">
+                  {favorites.map((item) => (
+                    <div key={item.id} className="flex gap-4 pb-4 border-b border-border">
+                      <img 
+                        src={item.image} 
+                        alt={item.name}
+                        className="w-20 h-20 object-cover rounded"
+                      />
+                      <div className="flex-1">
+                        <h3 className="text-sm font-light text-foreground">{item.name}</h3>
+                        <p className="text-xs text-muted-foreground mb-2">{item.category}</p>
+                        <p className="text-sm font-light text-foreground">{item.price}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
         </div>

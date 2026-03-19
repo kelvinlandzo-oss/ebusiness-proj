@@ -5,6 +5,8 @@ import {
 } from "@/components/ui/carousel";
 import { Card, CardContent } from "@/components/ui/card";
 import { Link } from "react-router-dom";
+import { Heart } from "lucide-react";
+import { useCart } from "@/contexts/CartContext";
 
 interface ColorOption {
   name: string;
@@ -125,6 +127,8 @@ const products: Product[] = [
 ];
 
 const ProductCarousel = () => {
+  const { addToFavorites, removeFromFavorites, isFavorited } = useCart();
+
   return (
     <section className="w-full mb-16 px-6">
       <Carousel
@@ -135,7 +139,24 @@ const ProductCarousel = () => {
           className="w-full"
         >
           <CarouselContent className="">
-            {products.map((product) => (
+            {products.map((product) => {
+              const isFav = isFavorited(product.id);
+              const handleFavoriteClick = (e: React.MouseEvent) => {
+                e.preventDefault();
+                if (isFav) {
+                  removeFromFavorites(product.id);
+                } else {
+                  addToFavorites({
+                    id: product.id,
+                    name: product.name,
+                    price: product.price,
+                    image: product.image,
+                    category: product.category,
+                  });
+                }
+              };
+
+              return (
                <CarouselItem
                  key={product.id}
                  className="basis-1/2 md:basis-1/3 lg:basis-1/4 pr-2 md:pr-4"
@@ -150,6 +171,19 @@ const ProductCarousel = () => {
                           className="w-full h-full object-cover transition-all duration-300 group-hover:scale-105"
                         />
                         <div className="absolute inset-0 bg-black/[0.03]"></div>
+                        
+                        {/* Heart Icon */}
+                        <button
+                          onClick={handleFavoriteClick}
+                          className="absolute top-2 right-2 p-2 rounded-full bg-white/80 hover:bg-white transition-all duration-200 z-10"
+                          aria-label="Add to favorites"
+                        >
+                          <Heart 
+                            size={18}
+                            className={isFav ? "fill-red-500 text-red-500" : "text-foreground"}
+                          />
+                        </button>
+
                         {product.isNew && (
                           <div className="absolute top-2 left-2 px-2 py-1 text-xs font-medium text-black">
                             NEW
@@ -173,7 +207,8 @@ const ProductCarousel = () => {
                  </Card>
                  </Link>
               </CarouselItem>
-            ))}
+              );
+            })}
           </CarouselContent>
         </Carousel>
     </section>

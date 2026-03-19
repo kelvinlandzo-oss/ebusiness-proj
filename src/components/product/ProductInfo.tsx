@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { useCart } from "@/contexts/CartContext";
+import { toast } from "sonner";
 import { 
   Breadcrumb, 
   BreadcrumbItem, 
@@ -15,15 +17,33 @@ const ProductInfo = () => {
   const [quantity, setQuantity] = useState(1);
   const [selectedSize, setSelectedSize] = useState<string>("M");
   const [selectedColor, setSelectedColor] = useState<string>("#000000");
+  const { addToCart } = useCart();
 
   const incrementQuantity = () => setQuantity(prev => prev + 1);
   const decrementQuantity = () => setQuantity(prev => Math.max(1, prev - 1));
 
+  const handleAddToBag = () => {
+    addToCart({
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      image: product.image,
+      quantity,
+      category: product.category,
+      size: selectedSize,
+      color: selectedColor,
+    });
+    toast.success(`${product.name} added to bag!`);
+    setQuantity(1);
+  };
+
   // Mock product data - in real app, would come from route params or context
   const product = {
+    id: 1,
     name: "Classic Cotton T-Shirt",
     category: "Tops",
     price: "GH₵85",
+    image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab",
     fabric: "Cotton",
     sizes: ["XS", "S", "M", "L", "XL"],
     colors: [
@@ -171,6 +191,7 @@ const ProductInfo = () => {
 
         <Button 
           className="w-full h-12 bg-foreground text-background hover:bg-foreground/90 font-light rounded-none"
+          onClick={handleAddToBag}
         >
           Add to Bag
         </Button>

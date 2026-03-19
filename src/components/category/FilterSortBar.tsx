@@ -36,6 +36,7 @@ const FilterSortBar = ({ filtersOpen, setFiltersOpen, itemCount, onFilterChange,
   const fabrics = ["Cotton", "Polyester", "Blend", "Silk", "Wool", "Linen", "Nylon", "Spandex", "Cashmere", "Merino", "Organic"];
   const fits = ["Regular", "Slim", "Loose"];
   const necklines = ["Crew", "V-Neck", "Hooded", "Scoop"];
+  const colors = ["Black", "White", "Navy", "Red", "Blue", "Green", "Pink", "Purple", "Gray", "Brown"];
 
   const toggleFilter = (filterType: keyof Omit<Filters, 'sortBy'>, value: string) => {
     const updatedArray = localFilters[filterType].includes(value)
@@ -60,6 +61,7 @@ const FilterSortBar = ({ filtersOpen, setFiltersOpen, itemCount, onFilterChange,
       fabrics: [],
       fits: [],
       necklines: [],
+      colors: [],
       sortBy: "featured"
     };
     setLocalFilters(clearedFilters);
@@ -91,7 +93,7 @@ const FilterSortBar = ({ filtersOpen, setFiltersOpen, itemCount, onFilterChange,
                     <SheetTitle className="text-lg font-light">Filters</SheetTitle>
                     {(localFilters.categories.length > 0 || localFilters.priceRanges.length > 0 || 
                       localFilters.fabrics.length > 0 || localFilters.fits.length > 0 || 
-                      localFilters.necklines.length > 0) && (
+                      localFilters.necklines.length > 0 || localFilters.colors.length > 0) && (
                       <button
                         onClick={clearAllFilters}
                         className="text-xs font-light text-foreground hover:text-muted-foreground transition-colors"
@@ -205,6 +207,28 @@ const FilterSortBar = ({ filtersOpen, setFiltersOpen, itemCount, onFilterChange,
                           />
                           <Label htmlFor={neckline} className="text-sm font-light text-foreground cursor-pointer">
                             {neckline}
+                          </Label>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <Separator className="border-border" />
+
+                  {/* Color Filter */}
+                  <div>
+                    <h3 className="text-sm font-light mb-4 text-foreground">Color</h3>
+                    <div className="space-y-3">
+                      {colors.map((color) => (
+                        <div key={color} className="flex items-center space-x-3">
+                          <Checkbox 
+                            id={color} 
+                            checked={localFilters.colors.includes(color)}
+                            onCheckedChange={() => toggleFilter('colors', color)}
+                            className="border-border data-[state=checked]:bg-foreground data-[state=checked]:border-foreground" 
+                          />
+                          <Label htmlFor={color} className="text-sm font-light text-foreground cursor-pointer">
+                            {color}
                           </Label>
                         </div>
                       ))}

@@ -12,6 +12,7 @@ export interface Filters {
   fabrics: string[];
   fits: string[];
   necklines: string[];
+  colors: string[];
   sortBy: string;
 }
 
@@ -25,6 +26,7 @@ const Category = () => {
     fabrics: [],
     fits: [],
     necklines: [],
+    colors: [],
     sortBy: "featured"
   });
 
