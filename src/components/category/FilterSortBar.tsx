@@ -28,9 +28,11 @@ interface FilterSortBarProps {
 const FilterSortBar = ({ filtersOpen, setFiltersOpen, itemCount }: FilterSortBarProps) => {
   const [sortBy, setSortBy] = useState("featured");
 
-  const categories = ["Earrings", "Bracelets", "Rings", "Necklaces"];
-  const priceRanges = ["Under €1,000", "€1,000 - €2,000", "€2,000 - €3,000", "Over €3,000"];
-  const materials = ["Gold", "Silver", "Rose Gold", "Platinum"];
+  const categories = ["Tops", "Bottoms", "Dresses", "Outerwear"];
+  const priceRanges = ["GH₵50 - GH₵300", "GH₵300 - GH₵800", "GH₵800 - GH₵2,000"];
+  const fabrics = ["Cotton", "Polyester", "Blend", "Silk", "Wool", "Linen", "Nylon", "Spandex", "Cashmere", "Merino", "Organic"];
+  const fits = ["Regular", "Slim", "Loose"];
+  const necklines = ["Crew", "V-Neck", "Hooded", "Scoop"];
 
   return (
     <>
@@ -93,13 +95,47 @@ const FilterSortBar = ({ filtersOpen, setFiltersOpen, itemCount }: FilterSortBar
 
                   {/* Material Filter */}
                   <div>
-                    <h3 className="text-sm font-light mb-4 text-foreground">Material</h3>
+                    <h3 className="text-sm font-light mb-4 text-foreground">Fabric</h3>
                     <div className="space-y-3">
-                      {materials.map((material) => (
-                        <div key={material} className="flex items-center space-x-3">
-                          <Checkbox id={material} className="border-border data-[state=checked]:bg-foreground data-[state=checked]:border-foreground" />
-                          <Label htmlFor={material} className="text-sm font-light text-foreground cursor-pointer">
-                            {material}
+                      {fabrics.map((fabric) => (
+                        <div key={fabric} className="flex items-center space-x-3">
+                          <Checkbox id={fabric} className="border-border data-[state=checked]:bg-foreground data-[state=checked]:border-foreground" />
+                          <Label htmlFor={fabric} className="text-sm font-light text-foreground cursor-pointer">
+                            {fabric}
+                          </Label>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <Separator className="border-border" />
+
+                  {/* Fit Filter */}
+                  <div>
+                    <h3 className="text-sm font-light mb-4 text-foreground">Fit</h3>
+                    <div className="space-y-3">
+                      {fits.map((fit) => (
+                        <div key={fit} className="flex items-center space-x-3">
+                          <Checkbox id={fit} className="border-border data-[state=checked]:bg-foreground data-[state=checked]:border-foreground" />
+                          <Label htmlFor={fit} className="text-sm font-light text-foreground cursor-pointer">
+                            {fit}
+                          </Label>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <Separator className="border-border" />
+
+                  {/* Neckline Filter */}
+                  <div>
+                    <h3 className="text-sm font-light mb-4 text-foreground">Neckline</h3>
+                    <div className="space-y-3">
+                      {necklines.map((neckline) => (
+                        <div key={neckline} className="flex items-center space-x-3">
+                          <Checkbox id={neckline} className="border-border data-[state=checked]:bg-foreground data-[state=checked]:border-foreground" />
+                          <Label htmlFor={neckline} className="text-sm font-light text-foreground cursor-pointer">
+                            {neckline}
                           </Label>
                         </div>
                       ))}

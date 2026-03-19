@@ -10,186 +10,399 @@ import shadowlineImage from "@/assets/shadowline.jpg";
 import organicEarring from "@/assets/organic-earring.png";
 import linkBracelet from "@/assets/link-bracelet.png";
 
+interface ColorOption {
+  name: string;
+  hex: string;
+}
+
 interface Product {
   id: number;
   name: string;
   category: string;
   price: string;
   image: string;
+  fabric: string;
+  sizes: string[];
+  colors: ColorOption[];
+  fit: "regular" | "slim" | "loose";
+  neckline?: string;
   isNew?: boolean;
 }
 
-// Extended product list for category page
+// Extended product list for category page - Clothing Store
 const products: Product[] = [
+  // TOPS (1-6)
   {
     id: 1,
-    name: "Pantheon",
-    category: "Earrings",
-    price: "€2,850",
+    name: "Classic Cotton T-Shirt",
+    category: "Tops",
+    price: "GH₵85",
     image: pantheonImage,
+    fabric: "Cotton",
+    sizes: ["XS", "S", "M", "L", "XL"],
+    colors: [
+      { name: "Black", hex: "#000000" },
+      { name: "White", hex: "#FFFFFF" },
+      { name: "Navy", hex: "#001F3F" },
+    ],
+    fit: "regular",
+    neckline: "Crew",
     isNew: true,
   },
   {
     id: 2,
-    name: "Eclipse",
-    category: "Bracelets",
-    price: "€3,200",
+    name: "Silk Blend Blouse",
+    category: "Tops",
+    price: "GH₵220",
     image: eclipseImage,
+    fabric: "Silk",
+    sizes: ["XS", "S", "M", "L", "XL", "XXL"],
+    colors: [
+      { name: "Ivory", hex: "#FFFFF0" },
+      { name: "Blush", hex: "#FFB6C1" },
+    ],
+    fit: "regular",
+    neckline: "V-Neck",
   },
   {
     id: 3,
-    name: "Halo",
-    category: "Earrings",
-    price: "€1,950",
+    name: "Wool Sweater",
+    category: "Tops",
+    price: "GH₵280",
     image: haloImage,
+    fabric: "Wool",
+    sizes: ["XS", "S", "M", "L", "XL"],
+    colors: [
+      { name: "Gray", hex: "#808080" },
+      { name: "Charcoal", hex: "#36454F" },
+      { name: "Cream", hex: "#FFFDD0" },
+    ],
+    fit: "regular",
+    neckline: "Crew",
     isNew: true,
   },
   {
     id: 4,
-    name: "Oblique",
-    category: "Earrings",
-    price: "€1,650",
+    name: "Linen Summer Top",
+    category: "Tops",
+    price: "GH₵120",
     image: obliqueImage,
+    fabric: "Linen",
+    sizes: ["XS", "S", "M", "L"],
+    colors: [
+      { name: "White", hex: "#FFFFFF" },
+      { name: "Khaki", hex: "#F0E68C" },
+      { name: "Terracotta", hex: "#E2725B" },
+    ],
+    fit: "loose",
+    neckline: "Crew",
   },
   {
     id: 5,
-    name: "Lintel",
-    category: "Earrings",
-    price: "€2,250",
+    name: "Formal Polyester Shirt",
+    category: "Tops",
+    price: "GH₵150",
     image: lintelImage,
+    fabric: "Polyester",
+    sizes: ["XS", "S", "M", "L", "XL"],
+    colors: [
+      { name: "White", hex: "#FFFFFF" },
+      { name: "Light Blue", hex: "#ADD8E6" },
+      { name: "Burgundy", hex: "#800020" },
+    ],
+    fit: "slim",
+    neckline: "Crew",
   },
   {
     id: 6,
-    name: "Shadowline",
-    category: "Bracelets",
-    price: "€3,950",
+    name: "Organic Cotton Tank",
+    category: "Tops",
+    price: "GH₵75",
     image: shadowlineImage,
+    fabric: "Organic Cotton",
+    sizes: ["XS", "S", "M", "L", "XL"],
+    colors: [
+      { name: "Black", hex: "#000000" },
+      { name: "Forest Green", hex: "#228B22" },
+    ],
+    fit: "regular",
+    neckline: "Crew",
   },
+
+  // BOTTOMS (7-12)
   {
     id: 7,
-    name: "Meridian",
-    category: "Earrings",
-    price: "€2,450",
+    name: "Classic Blue Jeans",
+    category: "Bottoms",
+    price: "GH₵320",
     image: pantheonImage,
+    fabric: "Cotton Blend",
+    sizes: ["XS", "S", "M", "L", "XL"],
+    colors: [
+      { name: "Dark Blue", hex: "#00008B" },
+      { name: "Light Blue", hex: "#87CEEB" },
+      { name: "Black", hex: "#000000" },
+    ],
+    fit: "regular",
   },
   {
     id: 8,
-    name: "Vertex",
-    category: "Bracelets",
-    price: "€2,800",
+    name: "Tailored Trousers",
+    category: "Bottoms",
+    price: "GH₵250",
     image: eclipseImage,
+    fabric: "Polyester",
+    sizes: ["XS", "S", "M", "L", "XL"],
+    colors: [
+      { name: "Black", hex: "#000000" },
+      { name: "Navy", hex: "#001F3F" },
+      { name: "Gray", hex: "#808080" },
+    ],
+    fit: "slim",
   },
   {
     id: 9,
-    name: "Apex",
-    category: "Earrings",
-    price: "€1,550",
+    name: "Casual Chinos",
+    category: "Bottoms",
+    price: "GH₵180",
     image: haloImage,
+    fabric: "Cotton",
+    sizes: ["XS", "S", "M", "L", "XL", "XXL"],
+    colors: [
+      { name: "Khaki", hex: "#F0E68C" },
+      { name: "Tan", hex: "#D2B48C" },
+      { name: "Olive", hex: "#808000" },
+    ],
+    fit: "regular",
   },
   {
     id: 10,
-    name: "Zenith",
-    category: "Earrings",
-    price: "€1,850",
+    name: "Linen Shorts",
+    category: "Bottoms",
+    price: "GH₵140",
     image: obliqueImage,
+    fabric: "Linen",
+    sizes: ["XS", "S", "M", "L", "XL"],
+    colors: [
+      { name: "White", hex: "#FFFFFF" },
+      { name: "Cream", hex: "#FFFDD0" },
+      { name: "Sand", hex: "#C2B280" },
+    ],
+    fit: "loose",
   },
   {
     id: 11,
-    name: "Prism",
-    category: "Earrings",
-    price: "€2,050",
+    name: "Leather Skirt",
+    category: "Bottoms",
+    price: "GH₵450",
     image: lintelImage,
+    fabric: "Faux Leather",
+    sizes: ["XS", "S", "M", "L"],
+    colors: [
+      { name: "Black", hex: "#000000" },
+      { name: "Brown", hex: "#8B4513" },
+    ],
+    fit: "slim",
   },
   {
     id: 12,
-    name: "Radiant",
-    category: "Bracelets",
-    price: "€3,650",
+    name: "Pleated Midi Skirt",
+    category: "Bottoms",
+    price: "GH₵200",
     image: shadowlineImage,
+    fabric: "Polyester",
+    sizes: ["XS", "S", "M", "L", "XL"],
+    colors: [
+      { name: "Navy", hex: "#001F3F" },
+      { name: "Gray", hex: "#808080" },
+      { name: "Black", hex: "#000000" },
+    ],
+    fit: "regular",
   },
+
+  // DRESSES (13-18)
   {
     id: 13,
-    name: "Stellar",
-    category: "Earrings",
-    price: "€2,150",
+    name: "Casual Day Dress",
+    category: "Dresses",
+    price: "GH₵280",
     image: pantheonImage,
+    fabric: "Cotton",
+    sizes: ["XS", "S", "M", "L", "XL"],
+    colors: [
+      { name: "White", hex: "#FFFFFF" },
+      { name: "Floral", hex: "#FF69B4" },
+      { name: "Navy", hex: "#001F3F" },
+    ],
+    fit: "regular",
+    neckline: "Crew",
+    isNew: true,
   },
   {
     id: 14,
-    name: "Cosmos",
-    category: "Bracelets",
-    price: "€2,950",
+    name: "Flowing Maxi Dress",
+    category: "Dresses",
+    price: "GH₵380",
     image: eclipseImage,
+    fabric: "Silk",
+    sizes: ["XS", "S", "M", "L", "XL"],
+    colors: [
+      { name: "Burgundy", hex: "#800020" },
+      { name: "Deep Purple", hex: "#663399" },
+    ],
+    fit: "loose",
+    neckline: "V-Neck",
   },
   {
     id: 15,
-    name: "Aurora",
-    category: "Earrings",
-    price: "€1,750",
+    name: "Elegant Cocktail Dress",
+    category: "Dresses",
+    price: "GH₵520",
     image: haloImage,
+    fabric: "Polyester",
+    sizes: ["XS", "S", "M", "L"],
+    colors: [
+      { name: "Black", hex: "#000000" },
+      { name: "Emerald", hex: "#50C878" },
+    ],
+    fit: "slim",
+    neckline: "V-Neck",
   },
   {
     id: 16,
-    name: "Nebula",
-    category: "Earrings",
-    price: "€1,850",
+    name: "Summer Sundress",
+    category: "Dresses",
+    price: "GH₵160",
     image: obliqueImage,
+    fabric: "Cotton",
+    sizes: ["XS", "S", "M", "L", "XL"],
+    colors: [
+      { name: "Yellow", hex: "#FFFF00" },
+      { name: "Coral", hex: "#FF7F50" },
+      { name: "Mint", hex: "#98FF98" },
+    ],
+    fit: "loose",
+    neckline: "Crew",
   },
   {
     id: 17,
-    name: "Orbit",
-    category: "Earrings",
-    price: "€2,350",
+    name: "Office Work Dress",
+    category: "Dresses",
+    price: "GH₵290",
     image: lintelImage,
+    fabric: "Polyester Blend",
+    sizes: ["XS", "S", "M", "L", "XL"],
+    colors: [
+      { name: "Black", hex: "#000000" },
+      { name: "Taupe", hex: "#B38B6D" },
+    ],
+    fit: "slim",
+    neckline: "Crew",
   },
   {
     id: 18,
-    name: "Galaxy",
-    category: "Bracelets",
-    price: "€3,450",
+    name: "Bohemian Print Dress",
+    category: "Dresses",
+    price: "GH₵210",
     image: shadowlineImage,
+    fabric: "Cotton",
+    sizes: ["XS", "S", "M", "L", "XL"],
+    colors: [
+      { name: "Multicolor", hex: "#FF6347" },
+      { name: "Earth Tone", hex: "#8B4513" },
+    ],
+    fit: "loose",
+    neckline: "V-Neck",
   },
+
+  // OUTERWEAR (19-24)
   {
     id: 19,
-    name: "Lunar",
-    category: "Earrings",
-    price: "€2,050",
+    name: "Cotton Blazer",
+    category: "Outerwear",
+    price: "GH₵420",
     image: pantheonImage,
+    fabric: "Cotton",
+    sizes: ["XS", "S", "M", "L", "XL"],
+    colors: [
+      { name: "Black", hex: "#000000" },
+      { name: "Navy", hex: "#001F3F" },
+      { name: "Cream", hex: "#FFFDD0" },
+    ],
+    fit: "slim",
   },
   {
     id: 20,
-    name: "Solar",
-    category: "Bracelets",
-    price: "€3,150",
+    name: "Denim Jacket",
+    category: "Outerwear",
+    price: "GH₵280",
     image: eclipseImage,
+    fabric: "Cotton",
+    sizes: ["XS", "S", "M", "L", "XL"],
+    colors: [
+      { name: "Dark Blue", hex: "#00008B" },
+      { name: "Light Blue", hex: "#87CEEB" },
+    ],
+    fit: "regular",
   },
   {
     id: 21,
-    name: "Astral",
-    category: "Earrings",
-    price: "€1,650",
+    name: "Wool Coat",
+    category: "Outerwear",
+    price: "GH₵680",
     image: haloImage,
+    fabric: "Wool",
+    sizes: ["XS", "S", "M", "L", "XL"],
+    colors: [
+      { name: "Charcoal", hex: "#36454F" },
+      { name: "Camel", hex: "#C19A6B" },
+      { name: "Navy", hex: "#001F3F" },
+    ],
+    fit: "regular",
   },
   {
     id: 22,
-    name: "Cosmic",
-    category: "Earrings",
-    price: "€1,950",
+    name: "Casual Baseball Jacket",
+    category: "Outerwear",
+    price: "GH₵190",
     image: obliqueImage,
+    fabric: "Polyester",
+    sizes: ["XS", "S", "M", "L", "XL"],
+    colors: [
+      { name: "Black", hex: "#000000" },
+      { name: "Gray", hex: "#808080" },
+      { name: "Navy", hex: "#001F3F" },
+    ],
+    fit: "loose",
   },
   {
     id: 23,
-    name: "Celestial",
-    category: "Earrings",
-    price: "€2,250",
+    name: "Leather Jacket",
+    category: "Outerwear",
+    price: "GH₵850",
     image: lintelImage,
+    fabric: "Faux Leather",
+    sizes: ["XS", "S", "M", "L", "XL"],
+    colors: [
+      { name: "Black", hex: "#000000" },
+      { name: "Brown", hex: "#8B4513" },
+    ],
+    fit: "slim",
   },
   {
     id: 24,
-    name: "Ethereal",
-    category: "Bracelets",
-    price: "€3,750",
+    name: "Lightweight Cardigan",
+    category: "Outerwear",
+    price: "GH₵240",
     image: shadowlineImage,
+    fabric: "Merino",
+    sizes: ["XS", "S", "M", "L", "XL", "XXL"],
+    colors: [
+      { name: "Cream", hex: "#FFFDD0" },
+      { name: "Gray", hex: "#808080" },
+      { name: "Blush", hex: "#FFB6C1" },
+    ],
+    fit: "regular",
   },
 ];
 
@@ -207,12 +420,7 @@ const ProductGrid = () => {
                     <img
                       src={product.image}
                       alt={product.name}
-                      className="w-full h-full object-cover transition-all duration-300 group-hover:opacity-0"
-                    />
-                    <img
-                      src={product.category === "Earrings" ? organicEarring : linkBracelet}
-                      alt={`${product.name} lifestyle`}
-                      className="absolute inset-0 w-full h-full object-cover transition-all duration-300 opacity-0 group-hover:opacity-100"
+                      className="w-full h-full object-cover transition-all duration-300 group-hover:scale-105"
                     />
                     <div className="absolute inset-0 bg-black/[0.03]"></div>
                     {product.isNew && (

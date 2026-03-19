@@ -14,56 +14,120 @@ import shadowlineImage from "@/assets/shadowline.jpg";
 import organicEarring from "@/assets/organic-earring.png";
 import linkBracelet from "@/assets/link-bracelet.png";
 
+interface ColorOption {
+  name: string;
+  hex: string;
+}
+
 interface Product {
   id: number;
   name: string;
   category: string;
   price: string;
   image: string;
+  fabric: string;
+  sizes: string[];
+  colors: ColorOption[];
+  fit: "regular" | "slim" | "loose";
+  neckline?: string;
+  isNew?: boolean;
 }
 
 const products: Product[] = [
   {
     id: 1,
-    name: "Pantheon",
-    category: "Earrings",
-    price: "€2,850",
+    name: "Classic Cotton T-Shirt",
+    category: "Tops",
+    price: "GH₵85",
     image: pantheonImage,
+    fabric: "Cotton",
+    sizes: ["XS", "S", "M", "L", "XL"],
+    colors: [
+      { name: "Black", hex: "#000000" },
+      { name: "White", hex: "#FFFFFF" },
+      { name: "Navy", hex: "#001F3F" },
+    ],
+    fit: "regular",
+    neckline: "Crew",
+    isNew: true,
   },
   {
-    id: 2,
-    name: "Eclipse",
-    category: "Bracelets",
-    price: "€3,200",
+    id: 7,
+    name: "Classic Blue Jeans",
+    category: "Bottoms",
+    price: "GH₵320",
     image: eclipseImage,
+    fabric: "Cotton Blend",
+    sizes: ["XS", "S", "M", "L", "XL"],
+    colors: [
+      { name: "Dark Blue", hex: "#00008B" },
+      { name: "Light Blue", hex: "#87CEEB" },
+      { name: "Black", hex: "#000000" },
+    ],
+    fit: "regular",
+  },
+  {
+    id: 13,
+    name: "Casual Day Dress",
+    category: "Dresses",
+    price: "GH₵280",
+    image: haloImage,
+    fabric: "Cotton",
+    sizes: ["XS", "S", "M", "L", "XL"],
+    colors: [
+      { name: "White", hex: "#FFFFFF" },
+      { name: "Floral", hex: "#FF69B4" },
+      { name: "Navy", hex: "#001F3F" },
+    ],
+    fit: "regular",
+    neckline: "Crew",
+    isNew: true,
+  },
+  {
+    id: 19,
+    name: "Cotton Blazer",
+    category: "Outerwear",
+    price: "GH₵420",
+    image: obliqueImage,
+    fabric: "Cotton",
+    sizes: ["XS", "S", "M", "L", "XL"],
+    colors: [
+      { name: "Black", hex: "#000000" },
+      { name: "Navy", hex: "#001F3F" },
+      { name: "Cream", hex: "#FFFDD0" },
+    ],
+    fit: "slim",
   },
   {
     id: 3,
-    name: "Halo",
-    category: "Earrings",
-    price: "€1,950",
-    image: haloImage,
-  },
-  {
-    id: 4,
-    name: "Oblique",
-    category: "Earrings",
-    price: "€1,650",
-    image: obliqueImage,
-  },
-  {
-    id: 5,
-    name: "Lintel",
-    category: "Earrings",
-    price: "€2,250",
+    name: "Wool Sweater",
+    category: "Tops",
+    price: "GH₵280",
     image: lintelImage,
+    fabric: "Wool",
+    sizes: ["XS", "S", "M", "L", "XL"],
+    colors: [
+      { name: "Gray", hex: "#808080" },
+      { name: "Charcoal", hex: "#36454F" },
+      { name: "Cream", hex: "#FFFDD0" },
+    ],
+    fit: "regular",
+    neckline: "Crew",
   },
   {
-    id: 6,
-    name: "Shadowline",
-    category: "Bracelets",
-    price: "€3,950",
+    id: 15,
+    name: "Elegant Cocktail Dress",
+    category: "Dresses",
+    price: "GH₵520",
     image: shadowlineImage,
+    fabric: "Polyester",
+    sizes: ["XS", "S", "M", "L"],
+    colors: [
+      { name: "Black", hex: "#000000" },
+      { name: "Emerald", hex: "#50C878" },
+    ],
+    fit: "slim",
+    neckline: "V-Neck",
   },
 ];
 
@@ -90,15 +154,10 @@ const ProductCarousel = () => {
                         <img
                           src={product.image}
                           alt={product.name}
-                          className="w-full h-full object-cover transition-all duration-300 group-hover:opacity-0"
-                        />
-                        <img
-                          src={product.category === "Earrings" ? organicEarring : linkBracelet}
-                          alt={`${product.name} lifestyle`}
-                          className="absolute inset-0 w-full h-full object-cover transition-all duration-300 opacity-0 group-hover:opacity-100"
+                          className="w-full h-full object-cover transition-all duration-300 group-hover:scale-105"
                         />
                         <div className="absolute inset-0 bg-black/[0.03]"></div>
-                        {(product.id === 1 || product.id === 3) && (
+                        {product.isNew && (
                           <div className="absolute top-2 left-2 px-2 py-1 text-xs font-medium text-black">
                             NEW
                           </div>

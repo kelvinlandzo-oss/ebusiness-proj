@@ -21,27 +21,22 @@ const SizeGuide = () => {
           subtitle="Find your perfect fit with our comprehensive sizing guide"
         />
         
-        <ContentSection title="Ring Sizing">
+        <ContentSection title="Clothing Size Chart">
           <div className="space-y-8">
             <div className="bg-muted/10 rounded-lg p-8">
-              <h3 className="text-xl font-light text-foreground mb-6">How to Measure Your Ring Size</h3>
-              <div className="grid md:grid-cols-2 gap-8">
+              <h3 className="text-xl font-light text-foreground mb-6">How to Take Your Measurements</h3>
+              <div className="grid md:grid-cols-3 gap-8">
                 <div className="space-y-4">
-                  <h4 className="font-medium text-foreground">Method 1: Using a Ring You Own</h4>
-                  <ol className="list-decimal list-inside space-y-2 text-muted-foreground">
-                    <li>Take a ring that fits comfortably on your desired finger</li>
-                    <li>Place it on a ruler and measure the inner diameter in millimeters</li>
-                    <li>Use our size chart below to find your size</li>
-                  </ol>
+                  <h4 className="font-medium text-foreground">Chest/Bust</h4>
+                  <p className="text-muted-foreground">Measure around the fullest part of your chest, keeping the tape relaxed and parallel to the ground.</p>
                 </div>
                 <div className="space-y-4">
-                  <h4 className="font-medium text-foreground">Method 2: Using String or Paper</h4>
-                  <ol className="list-decimal list-inside space-y-2 text-muted-foreground">
-                    <li>Wrap string or paper around your finger where the ring will sit</li>
-                    <li>Mark where the material overlaps</li>
-                    <li>Measure the length in millimeters</li>
-                    <li>Divide by 3.14 to get the diameter</li>
-                  </ol>
+                  <h4 className="font-medium text-foreground">Waist</h4>
+                  <p className="text-muted-foreground">Measure around your natural waistline, where your pants typically sit. Keep the tape comfortable, not tight.</p>
+                </div>
+                <div className="space-y-4">
+                  <h4 className="font-medium text-foreground">Length</h4>
+                  <p className="text-muted-foreground">For tops, measure from the shoulder seam to desired length. For bottoms, measure from waist to ankle.</p>
                 </div>
               </div>
             </div>
@@ -50,31 +45,28 @@ const SizeGuide = () => {
               <table className="w-full border-collapse border border-border">
                 <thead>
                   <tr className="bg-muted/20">
-                    <th className="border border-border p-3 text-left font-light">US Size</th>
-                    <th className="border border-border p-3 text-left font-light">UK Size</th>
-                    <th className="border border-border p-3 text-left font-light">EU Size</th>
-                    <th className="border border-border p-3 text-left font-light">Diameter (mm)</th>
-                    <th className="border border-border p-3 text-left font-light">Circumference (mm)</th>
+                    <th className="border border-border p-3 text-left font-light">Size</th>
+                    <th className="border border-border p-3 text-left font-light">Chest (cm)</th>
+                    <th className="border border-border p-3 text-left font-light">Waist (cm)</th>
+                    <th className="border border-border p-3 text-left font-light">Length (cm)</th>
+                    <th className="border border-border p-3 text-left font-light">Fit Notes</th>
                   </tr>
                 </thead>
                 <tbody>
                   {[
-                    { us: "5", uk: "J", eu: "49", diameter: "15.6", circumference: "49.0" },
-                    { us: "5.5", uk: "K", eu: "50", diameter: "16.0", circumference: "50.2" },
-                    { us: "6", uk: "L", eu: "51", diameter: "16.4", circumference: "51.5" },
-                    { us: "6.5", uk: "M", eu: "52", diameter: "16.8", circumference: "52.8" },
-                    { us: "7", uk: "N", eu: "54", diameter: "17.2", circumference: "54.0" },
-                    { us: "7.5", uk: "O", eu: "55", diameter: "17.6", circumference: "55.3" },
-                    { us: "8", uk: "P", eu: "56", diameter: "18.0", circumference: "56.5" },
-                    { us: "8.5", uk: "Q", eu: "57", diameter: "18.4", circumference: "57.8" },
-                    { us: "9", uk: "R", eu: "59", diameter: "18.8", circumference: "59.1" }
-                  ].map((size, index) => (
+                    { size: "XS", chest: "79-84", waist: "61-66", length: "62-65", notes: "Extra small, petite fit" },
+                    { size: "S", chest: "84-89", waist: "66-71", length: "65-68", notes: "Small, classic fit" },
+                    { size: "M", chest: "89-94", waist: "71-76", length: "68-71", notes: "Medium, regular fit" },
+                    { size: "L", chest: "94-99", waist: "76-81", length: "71-74", notes: "Large, relaxed fit" },
+                    { size: "XL", chest: "99-104", waist: "81-86", length: "74-77", notes: "Extra large, loose fit" },
+                    { size: "XXL", chest: "104-109", waist: "86-91", length: "77-80", notes: "Double extra large" }
+                  ].map((sizeRow, index) => (
                     <tr key={index} className="hover:bg-muted/10">
-                      <td className="border border-border p-3">{size.us}</td>
-                      <td className="border border-border p-3">{size.uk}</td>
-                      <td className="border border-border p-3">{size.eu}</td>
-                      <td className="border border-border p-3">{size.diameter}</td>
-                      <td className="border border-border p-3">{size.circumference}</td>
+                      <td className="border border-border p-3 font-medium">{sizeRow.size}</td>
+                      <td className="border border-border p-3">{sizeRow.chest}</td>
+                      <td className="border border-border p-3">{sizeRow.waist}</td>
+                      <td className="border border-border p-3">{sizeRow.length}</td>
+                      <td className="border border-border p-3 text-sm text-muted-foreground">{sizeRow.notes}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -83,45 +75,47 @@ const SizeGuide = () => {
           </div>
         </ContentSection>
 
-        <ContentSection title="Bracelet & Necklace Sizing">
-          <div className="grid md:grid-cols-2 gap-12">
+        <ContentSection title="Fit Guide">
+          <div className="grid md:grid-cols-3 gap-12">
             <div className="space-y-6">
-              <h3 className="text-xl font-light text-foreground">Bracelet Sizes</h3>
-              <div className="space-y-4">
-                <div className="flex justify-between py-2 border-b border-border">
-                  <span className="text-muted-foreground">Small</span>
-                  <span className="text-foreground">6.5" - 7"</span>
-                </div>
-                <div className="flex justify-between py-2 border-b border-border">
-                  <span className="text-muted-foreground">Medium</span>
-                  <span className="text-foreground">7" - 7.5"</span>
-                </div>
-                <div className="flex justify-between py-2 border-b border-border">
-                  <span className="text-muted-foreground">Large</span>
-                  <span className="text-foreground">7.5" - 8"</span>
-                </div>
+              <h3 className="text-xl font-light text-foreground">Regular Fit</h3>
+              <div className="space-y-3">
+                <p className="text-muted-foreground">
+                  Our regular fit provides a classic, comfortable silhouette. Perfect for everyday wear and layering.
+                </p>
+                <ul className="space-y-2 text-sm text-muted-foreground">
+                  <li>✓ Relaxed through the body</li>
+                  <li>✓ Standard armhole placement</li>
+                  <li>✓ Versatile for all body types</li>
+                </ul>
               </div>
             </div>
             
             <div className="space-y-6">
-              <h3 className="text-xl font-light text-foreground">Necklace Lengths</h3>
-              <div className="space-y-4">
-                <div className="flex justify-between py-2 border-b border-border">
-                  <span className="text-muted-foreground">Choker</span>
-                  <span className="text-foreground">14" - 16"</span>
-                </div>
-                <div className="flex justify-between py-2 border-b border-border">
-                  <span className="text-muted-foreground">Princess</span>
-                  <span className="text-foreground">17" - 19"</span>
-                </div>
-                <div className="flex justify-between py-2 border-b border-border">
-                  <span className="text-muted-foreground">Matinee</span>
-                  <span className="text-foreground">20" - 24"</span>
-                </div>
-                <div className="flex justify-between py-2 border-b border-border">
-                  <span className="text-muted-foreground">Opera</span>
-                  <span className="text-foreground">28" - 36"</span>
-                </div>
+              <h3 className="text-xl font-light text-foreground">Slim Fit</h3>
+              <div className="space-y-3">
+                <p className="text-muted-foreground">
+                  Our slim fit follows the natural contours of the body for a tailored look.
+                </p>
+                <ul className="space-y-2 text-sm text-muted-foreground">
+                  <li>✓ Fitted through shoulders</li>
+                  <li>✓ Tapered at waist</li>
+                  <li>✓ Modern, streamlined look</li>
+                </ul>
+              </div>
+            </div>
+
+            <div className="space-y-6">
+              <h3 className="text-xl font-light text-foreground">Loose Fit</h3>
+              <div className="space-y-3">
+                <p className="text-muted-foreground">
+                  Our loose fit offers maximum comfort and freedom of movement.
+                </p>
+                <ul className="space-y-2 text-sm text-muted-foreground">
+                  <li>✓ Relaxed throughout</li>
+                  <li>✓ Generous fit</li>
+                  <li>✓ Comfortable and effortless</li>
+                </ul>
               </div>
             </div>
           </div>
@@ -130,15 +124,14 @@ const SizeGuide = () => {
         <ContentSection title="Need Help?">
           <div className="space-y-6">
             <p className="text-muted-foreground">
-              Still unsure about sizing? Our jewelry consultants are here to help you find the perfect fit. 
-              Download our printable size guide or schedule a virtual consultation.
+              Still unsure about your size? Our style consultants are here to help. You can download our printable size guide or reach out to our customer care team for personalized recommendations.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button variant="outline" className="rounded-none">
                 Download PDF Guide
               </Button>
               <Button className="rounded-none">
-                Schedule Consultation
+                Contact Customer Care
               </Button>
             </div>
           </div>

@@ -43,14 +43,15 @@ const ProductDescription = () => {
         {isDescriptionOpen && (
           <div className="pb-6 space-y-4">
             <p className="text-sm font-light text-muted-foreground leading-relaxed">
-              The Pantheon earrings embody architectural elegance with their clean, geometric design. 
-              Inspired by classical Roman architecture, these statement pieces feature a sophisticated 
-              interplay of curves and angles that catch and reflect light beautifully.
+              Our Classic Cotton T-Shirt is a wardrobe essential made from premium quality cotton. 
+              With a comfortable regular fit and crew neckline, this versatile piece is perfect for 
+              casual wear and layering. The high-quality fabric ensures durability and comfort with 
+              every wear.
             </p>
             <p className="text-sm font-light text-muted-foreground leading-relaxed">
-              Each earring is meticulously crafted from premium sterling silver with an 18k gold 
-              plating, ensuring both durability and luxury. The minimalist aesthetic makes them 
-              perfect for both everyday wear and special occasions.
+              Available in multiple colors and sizes, this classic t-shirt pairs effortlessly with 
+              jeans, shorts, or layered pieces. Its timeless design and quality construction make it 
+              a reliable staple for any season.
             </p>
           </div>
         )}
@@ -74,19 +75,19 @@ const ProductDescription = () => {
           <div className="pb-6 space-y-3">
             <div className="flex justify-between">
               <span className="text-sm font-light text-muted-foreground">SKU</span>
-              <span className="text-sm font-light text-foreground">LE-PTH-001</span>
+              <span className="text-sm font-light text-foreground">CT-SHIRT-BLK-001</span>
             </div>
             <div className="flex justify-between">
               <span className="text-sm font-light text-muted-foreground">Collection</span>
-              <span className="text-sm font-light text-foreground">Architectural Series</span>
+              <span className="text-sm font-light text-foreground">Essentials</span>
             </div>
             <div className="flex justify-between">
-              <span className="text-sm font-light text-muted-foreground">Closure</span>
-              <span className="text-sm font-light text-foreground">Post and butterfly back</span>
+              <span className="text-sm font-light text-muted-foreground">Fabric Composition</span>
+              <span className="text-sm font-light text-foreground">100% Cotton</span>
             </div>
             <div className="flex justify-between">
-              <span className="text-sm font-light text-muted-foreground">Hypoallergenic</span>
-              <span className="text-sm font-light text-foreground">Yes</span>
+              <span className="text-sm font-light text-muted-foreground">Care</span>
+              <span className="text-sm font-light text-foreground">Machine wash cold</span>
             </div>
           </div>
         )}
@@ -109,13 +110,14 @@ const ProductDescription = () => {
         {isCareOpen && (
           <div className="pb-6 space-y-4">
             <ul className="space-y-2">
-              <li className="text-sm font-light text-muted-foreground">• Clean with a soft, dry cloth after each wear</li>
-              <li className="text-sm font-light text-muted-foreground">• Avoid contact with perfumes, lotions, and cleaning products</li>
-              <li className="text-sm font-light text-muted-foreground">• Store in the provided jewelry pouch when not wearing</li>
-              <li className="text-sm font-light text-muted-foreground">• Remove before swimming, exercising, or showering</li>
+              <li className="text-sm font-light text-muted-foreground">• Machine wash in cold water with similar colors</li>
+              <li className="text-sm font-light text-muted-foreground">• Use gentle cycle; avoid bleach and fabric softener</li>
+              <li className="text-sm font-light text-muted-foreground">• Lay flat to dry or tumble dry on low heat</li>
+              <li className="text-sm font-light text-muted-foreground">• Iron on low if needed; remove promptly to prevent wrinkles</li>
+              <li className="text-sm font-light text-muted-foreground">• Do not dry clean or use commercial pressing</li>
             </ul>
             <p className="text-sm font-light text-muted-foreground">
-              For professional cleaning, visit your local jeweler or contact our customer service team.
+              For best results and longevity of your garment, follow these care instructions carefully.
             </p>
           </div>
         )}
@@ -166,8 +168,8 @@ const ProductDescription = () => {
                   <span className="text-sm font-light text-muted-foreground">Sarah M.</span>
                 </div>
                 <p className="text-sm font-light text-muted-foreground leading-relaxed">
-                  "Absolutely stunning earrings! The quality is exceptional and they go with everything. 
-                  The architectural design is so unique and I get compliments every time I wear them."
+                  "Perfect everyday t-shirt! The fabric quality is amazing and it holds up great after 
+                  multiple washes. I love that it comes in so many colors. This is my go-to staple."
                 </p>
               </div>
 
@@ -184,8 +186,8 @@ const ProductDescription = () => {
                   <span className="text-sm font-light text-muted-foreground">Emma T.</span>
                 </div>
                 <p className="text-sm font-light text-muted-foreground leading-relaxed">
-                  "Beautiful craftsmanship and comfortable to wear all day. The gold plating has held up 
-                  perfectly after months of regular wear. Highly recommend!"
+                  "Great quality cotton and comfortable fit. The color is true to what I expected. 
+                  Very satisfied with my purchase and would definitely order again."
                 </p>
               </div>
 
@@ -202,8 +204,8 @@ const ProductDescription = () => {
                   <span className="text-sm font-light text-muted-foreground">Jessica R.</span>
                 </div>
                 <p className="text-sm font-light text-muted-foreground leading-relaxed">
-                  "These earrings are a work of art. The minimalist design is elegant and sophisticated. 
-                  Perfect weight and the packaging was beautiful too."
+                  "This is the best basic t-shirt I've found. It doesn't shrink, the seams are well-made, 
+                  and it looks great even after washing. Highly recommend!"
                 </p>
               </div>
             </div>

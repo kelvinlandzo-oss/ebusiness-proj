@@ -28,27 +28,27 @@ const Navigation = () => {
   const [cartItems, setCartItems] = useState<CartItem[]>([
     {
       id: 1,
-      name: "Pantheon",
-      price: "€2,850",
+      name: "Classic Cotton T-Shirt",
+      price: "GH₵85",
       image: pantheonImage,
       quantity: 1,
-      category: "Earrings"
+      category: "Tops"
     },
     {
-      id: 2,
-      name: "Eclipse",
-      price: "€3,200", 
+      id: 7,
+      name: "Classic Blue Jeans",
+      price: "GH₵320", 
       image: eclipseImage,
       quantity: 1,
-      category: "Bracelets"
+      category: "Bottoms"
     },
     {
-      id: 3,
-      name: "Halo",
-      price: "€1,950",
+      id: 13,
+      name: "Casual Day Dress",
+      price: "GH₵280",
       image: haloImage, 
       quantity: 1,
-      category: "Earrings"
+      category: "Dresses"
     }
   ]);
 
@@ -83,12 +83,12 @@ const Navigation = () => {
   }, []);
 
   const popularSearches = [
-    "Gold Rings",
-    "Silver Necklaces", 
-    "Pearl Earrings",
-    "Designer Bracelets",
-    "Wedding Rings",
-    "Vintage Collection"
+    "Cotton T-Shirts",
+    "Blue Jeans", 
+    "Summer Dresses",
+    "Casual Blazers",
+    "Wool Sweaters",
+    "Linen Shorts"
   ];
   
   const navItems = [
@@ -96,15 +96,14 @@ const Navigation = () => {
       name: "Shop", 
       href: "/category/shop",
       submenuItems: [
-        "Rings",
-        "Necklaces", 
-        "Earrings",
-        "Bracelets",
-        "Watches"
+        "Tops",
+        "Bottoms", 
+        "Dresses",
+        "Outerwear"
       ],
       images: [
-        { src: "/rings-collection.png", alt: "Rings Collection", label: "Rings" },
-        { src: "/earrings-collection.png", alt: "Earrings Collection", label: "Earrings" }
+        { src: "/rings-collection.png", alt: "Tops Collection", label: "Tops" },
+        { src: "/earrings-collection.png", alt: "Dresses Collection", label: "Dresses" }
       ]
     },
     { 
@@ -113,13 +112,13 @@ const Navigation = () => {
       submenuItems: [
         "This Week's Arrivals",
         "Spring Collection",
-        "Featured Designers",
-        "Limited Edition",
-        "Pre-Orders"
+        "Trending Now",
+        "Sale Items",
+        "New Designers"
       ],
       images: [
-        { src: "/arcus-bracelet.png", alt: "Arcus Bracelet", label: "Arcus Bracelet" },
-        { src: "/span-bracelet.png", alt: "Span Bracelet", label: "Span Bracelet" }
+        { src: "/arcus-bracelet.png", alt: "New Arrivals", label: "New Arrivals" },
+        { src: "/span-bracelet.png", alt: "Spring Collection", label: "Spring Collection" }
       ]
     },
     { 
@@ -314,7 +313,7 @@ const Navigation = () => {
                   </svg>
                   <input
                     type="text"
-                    placeholder="Search for jewelry..."
+                    placeholder="Search for clothing..."
                     className="flex-1 bg-transparent text-nav-foreground placeholder:text-nav-foreground/60 outline-none text-lg"
                     autoFocus
                   />

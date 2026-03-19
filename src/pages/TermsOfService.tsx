@@ -4,7 +4,7 @@ import Footer from "../components/footer/Footer";
 
 const TermsOfService = () => {
   useEffect(() => {
-    document.title = "Terms of Service - Linea Jewelry";
+    document.title = "Terms of Service - Linea Clothing";
   }, []);
 
   return (
@@ -15,21 +15,21 @@ const TermsOfService = () => {
         <div className="max-w-4xl mx-auto px-6 py-12">
           <header className="mb-12 text-center">
             <h1 className="text-4xl font-light text-foreground mb-4">Terms of Service</h1>
-            <p className="text-muted-foreground">Last updated: January 15, 2024</p>
+            <p className="text-muted-foreground">Last updated: March 19, 2026</p>
           </header>
 
           <div className="prose prose-lg max-w-none space-y-8">
             <section>
               <h2 className="text-2xl font-light text-foreground mb-4">Agreement to Terms</h2>
               <p className="text-muted-foreground leading-relaxed">
-                By accessing and using the Linea Jewelry Inc. website and services, you accept and agree to be bound by the terms and provision of this agreement. These Terms of Service govern your use of our website, products, and services.
+                By accessing and using the Linea Clothing website and services, you accept and agree to be bound by the terms and provision of this agreement. These Terms of Service govern your use of our website, products, and services.
               </p>
             </section>
 
             <section>
               <h2 className="text-2xl font-light text-foreground mb-4">Use License</h2>
               <p className="text-muted-foreground leading-relaxed mb-4">
-                Permission is granted to temporarily download one copy of the materials on Linea Jewelry Inc.'s website for personal, non-commercial transitory viewing only. This is the grant of a license, not a transfer of title, and under this license you may not:
+                Permission is granted to temporarily download one copy of the materials on Linea Clothing's website for personal, non-commercial transitory viewing only. This is the grant of a license, not a transfer of title, and under this license you may not:
               </p>
               <ul className="list-disc list-inside text-muted-foreground space-y-1">
                 <li>Modify or copy the materials</li>
@@ -80,18 +80,33 @@ const TermsOfService = () => {
               <p className="text-muted-foreground leading-relaxed mb-4">
                 We want you to be completely satisfied with your purchase. Returns and exchanges are accepted within 30 days of delivery, subject to the following conditions:
               </p>
-              <ul className="list-disc list-inside text-muted-foreground space-y-1">
-                <li>Items must be in original condition and packaging</li>
-                <li>Custom or personalized items are final sale</li>
-                <li>Return shipping costs are the responsibility of the customer</li>
-                <li>Refunds will be processed to the original payment method</li>
+              <ul className="list-disc list-inside text-muted-foreground space-y-2 mb-4">
+                <li>Items must be unworn, unwashed, and in original condition with all tags attached</li>
+                <li>Final sale items include undergarments, swimwear, and items marked as "Final Sale"</li>
+                <li>Custom or personalized clothing items cannot be returned</li>
+                <li>Return shipping is free within Ghana; international returns are customer's responsibility</li>
+                <li>Refunds will be processed to the original payment method within 5-7 business days</li>
+                <li>Exchanges for a different size or color are available for one year from purchase</li>
               </ul>
+              <div className="bg-muted/10 p-4 rounded-lg">
+                <h4 className="font-light text-foreground mb-2">How to Initiate a Return or Exchange:</h4>
+                <ol className="list-decimal list-inside text-muted-foreground space-y-1">
+                  <li>Contact our Customer Care team with your order number</li>
+                  <li>Receive a return shipping label (if applicable)</li>
+                  <li>Package the item securely with original tags and documentation</li>
+                  <li>Ship to our return address</li>
+                  <li>Receive confirmation once item is received and inspected</li>
+                </ol>
+              </div>
             </section>
 
             <section>
-              <h2 className="text-2xl font-light text-foreground mb-4">Warranty and Care</h2>
+              <h2 className="text-2xl font-light text-foreground mb-4">Care and Maintenance</h2>
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                To ensure your clothing lasts as long as possible, proper care is essential. Care instructions are provided on each garment's tag and detailed instructions are available on our website. Following these instructions helps maintain color, fit, and fabric quality.
+              </p>
               <p className="text-muted-foreground leading-relaxed">
-                Our jewelry comes with a limited warranty against manufacturing defects. This warranty does not cover damage from normal wear, improper care, or accidents. Proper care instructions are provided with each purchase and on our website.
+                We recommend using gentle washing methods, avoiding excessive heat, and storing garments properly. Fabric-specific care instructions vary by material and should always be followed. Damage from improper care or accidents is not covered under our defect policy.
               </p>
             </section>
 
@@ -105,7 +120,7 @@ const TermsOfService = () => {
             <section>
               <h2 className="text-2xl font-light text-foreground mb-4">Limitation of Liability</h2>
               <p className="text-muted-foreground leading-relaxed">
-                In no event shall Linea Jewelry Inc. or its suppliers be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption) arising out of the use or inability to use the materials on our website or products, even if we have been notified of the possibility of such damage.
+                In no event shall Linea Clothing or its suppliers be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption) arising out of the use or inability to use the materials on our website or products, even if we have been notified of the possibility of such damage.
               </p>
             </section>
 
@@ -136,9 +151,9 @@ const TermsOfService = () => {
                 If you have any questions about these Terms of Service, please contact us at:
               </p>
               <div className="mt-4 text-muted-foreground">
-                <p>Email: legal@lineajewelry.com</p>
-                <p>Phone: +1 (212) 555-0123</p>
-                <p>Address: 123 Madison Avenue, New York, NY 10016</p>
+                <p>Email: legal@lineaclothing.com</p>
+                <p>Phone: +233 (0) 2XX XXX XXXX</p>
+                <p>Address: Accra, Ghana</p>
               </div>
             </section>
           </div>
