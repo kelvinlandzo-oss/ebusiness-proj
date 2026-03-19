@@ -12,11 +12,12 @@ import {
   BreadcrumbSeparator 
 } from "@/components/ui/breadcrumb";
 import { Minus, Plus } from "lucide-react";
+import { Product } from "../../data/products";
 
-const ProductInfo = () => {
+const ProductInfo = ({ product }: { product: Product }) => {
   const [quantity, setQuantity] = useState(1);
-  const [selectedSize, setSelectedSize] = useState<string>("M");
-  const [selectedColor, setSelectedColor] = useState<string>("#000000");
+  const [selectedSize, setSelectedSize] = useState<string>(product.sizes[0] || "");
+  const [selectedColor, setSelectedColor] = useState<string>(product.colors[0]?.hex || "");
   const { addToCart } = useCart();
 
   const incrementQuantity = () => setQuantity(prev => prev + 1);
@@ -35,25 +36,6 @@ const ProductInfo = () => {
     });
     toast.success(`${product.name} added to bag!`);
     setQuantity(1);
-  };
-
-  // Mock product data - in real app, would come from route params or context
-  const product = {
-    id: 1,
-    name: "Classic Cotton T-Shirt",
-    category: "Tops",
-    price: "GH₵85",
-    image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab",
-    fabric: "Cotton",
-    sizes: ["XS", "S", "M", "L", "XL"],
-    colors: [
-      { name: "Black", hex: "#000000" },
-      { name: "White", hex: "#FFFFFF" },
-      { name: "Navy", hex: "#001F3F" },
-    ],
-    fit: "Regular",
-    neckline: "Crew",
-    description: "Classic everyday cotton t-shirt made from premium quality cotton. Perfect for casual wear and layering. Comfortable fit, breathable fabric, and timeless style.",
   };
 
   return (

@@ -18,7 +18,9 @@ const CustomStar = ({ filled, className }: { filled: boolean; className?: string
   </svg>
 );
 
-const ProductDescription = () => {
+import { Product } from "../../data/products";
+
+const ProductDescription = ({ product }: { product: Product }) => {
   const [isDescriptionOpen, setIsDescriptionOpen] = useState(false);
   const [isDetailsOpen, setIsDetailsOpen] = useState(false);
   const [isCareOpen, setIsCareOpen] = useState(false);
@@ -43,15 +45,7 @@ const ProductDescription = () => {
         {isDescriptionOpen && (
           <div className="pb-6 space-y-4">
             <p className="text-sm font-light text-muted-foreground leading-relaxed">
-              Our Classic Cotton T-Shirt is a wardrobe essential made from premium quality cotton. 
-              With a comfortable regular fit and crew neckline, this versatile piece is perfect for 
-              casual wear and layering. The high-quality fabric ensures durability and comfort with 
-              every wear.
-            </p>
-            <p className="text-sm font-light text-muted-foreground leading-relaxed">
-              Available in multiple colors and sizes, this classic t-shirt pairs effortlessly with 
-              jeans, shorts, or layered pieces. Its timeless design and quality construction make it 
-              a reliable staple for any season.
+              {product.description || `Our ${product.name} is a wardrobe essential made from premium quality ${product.fabric?.toLowerCase() || 'materials'}. With a comfortable ${product.fit} fit, this versatile piece is perfect for everyday wear. The high-quality fabric ensures durability and comfort with every wear.`}
             </p>
           </div>
         )}
@@ -75,19 +69,19 @@ const ProductDescription = () => {
           <div className="pb-6 space-y-3">
             <div className="flex justify-between">
               <span className="text-sm font-light text-muted-foreground">SKU</span>
-              <span className="text-sm font-light text-foreground">CT-SHIRT-BLK-001</span>
+              <span className="text-sm font-light text-foreground">{product.sku || `SKU-${product.id.toString().padStart(4, '0')}`}</span>
             </div>
             <div className="flex justify-between">
               <span className="text-sm font-light text-muted-foreground">Collection</span>
-              <span className="text-sm font-light text-foreground">Essentials</span>
+              <span className="text-sm font-light text-foreground">{product.collection || "Essentials"}</span>
             </div>
             <div className="flex justify-between">
               <span className="text-sm font-light text-muted-foreground">Fabric Composition</span>
-              <span className="text-sm font-light text-foreground">100% Cotton</span>
+              <span className="text-sm font-light text-foreground">{product.fabric}</span>
             </div>
             <div className="flex justify-between">
-              <span className="text-sm font-light text-muted-foreground">Care</span>
-              <span className="text-sm font-light text-foreground">Machine wash cold</span>
+              <span className="text-sm font-light text-muted-foreground">Fit</span>
+              <span className="text-sm font-light text-foreground capitalize">{product.fit}</span>
             </div>
           </div>
         )}
@@ -110,11 +104,17 @@ const ProductDescription = () => {
         {isCareOpen && (
           <div className="pb-6 space-y-4">
             <ul className="space-y-2">
-              <li className="text-sm font-light text-muted-foreground">• Machine wash in cold water with similar colors</li>
-              <li className="text-sm font-light text-muted-foreground">• Use gentle cycle; avoid bleach and fabric softener</li>
-              <li className="text-sm font-light text-muted-foreground">• Lay flat to dry or tumble dry on low heat</li>
-              <li className="text-sm font-light text-muted-foreground">• Iron on low if needed; remove promptly to prevent wrinkles</li>
-              <li className="text-sm font-light text-muted-foreground">• Do not dry clean or use commercial pressing</li>
+              {product.careInstructions ? (
+                product.careInstructions.map((instruction, index) => (
+                  <li key={index} className="text-sm font-light text-muted-foreground">• {instruction}</li>
+                ))
+              ) : (
+                <>
+                  <li className="text-sm font-light text-muted-foreground">• Machine wash in cold water with similar colors</li>
+                  <li className="text-sm font-light text-muted-foreground">• Use gentle cycle; avoid bleach and fabric softener</li>
+                  <li className="text-sm font-light text-muted-foreground">• Lay flat to dry or tumble dry on low heat</li>
+                </>
+              )}
             </ul>
             <p className="text-sm font-light text-muted-foreground">
               For best results and longevity of your garment, follow these care instructions carefully.

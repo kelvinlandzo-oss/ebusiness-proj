@@ -1,15 +1,11 @@
 import { useState, useRef } from "react";
 import ImageZoom from "./ImageZoom";
 
-const productImages = [
-  "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab",
-  "https://images.unsplash.com/photo-1525572614472-0ff3a63fff71",
-  "https://images.unsplash.com/photo-1542272604-787c62d465d1",
-  "https://images.unsplash.com/photo-1595889951946-c74c6f7ad1db",
-  "https://images.unsplash.com/photo-1543163521-9effc05b9f54",
-];
+interface ProductImageGalleryProps {
+  images: string[];
+}
 
-const ProductImageGallery = () => {
+const ProductImageGallery = ({ images = [] }: ProductImageGalleryProps) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isZoomOpen, setIsZoomOpen] = useState(false);
   const [zoomInitialIndex, setZoomInitialIndex] = useState(0);
@@ -17,11 +13,11 @@ const ProductImageGallery = () => {
   const touchEndX = useRef<number | null>(null);
 
   const nextImage = () => {
-    setCurrentImageIndex((prev) => (prev + 1) % productImages.length);
+    setCurrentImageIndex((prev) => (prev + 1) % images.length);
   };
 
   const prevImage = () => {
-    setCurrentImageIndex((prev) => (prev - 1 + productImages.length) % productImages.length);
+    setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length);
   };
 
   const handleImageClick = (index: number) => {
@@ -62,7 +58,7 @@ const ProductImageGallery = () => {
       {/* Desktop: Vertical scrolling gallery (1024px and above) */}
       <div className="hidden lg:block">
         <div className="space-y-4">
-          {productImages.map((image, index) => (
+          {images.map((image, index) => (
             <div 
               key={index} 
               className="w-full aspect-square overflow-hidden cursor-pointer group"
@@ -89,7 +85,7 @@ const ProductImageGallery = () => {
             onTouchEnd={handleTouchEnd}
           >
             <img
-              src={productImages[currentImageIndex]}
+              src={images[currentImageIndex]}
               alt={`Product view ${currentImageIndex + 1}`}
               className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105 select-none"
             />
@@ -97,7 +93,7 @@ const ProductImageGallery = () => {
           
           {/* Dots indicator */}
           <div className="flex justify-center mt-4 gap-2">
-            {productImages.map((_, index) => (
+            {images.map((_, index) => (
               <button
                 key={index}
                 onClick={() => setCurrentImageIndex(index)}
@@ -112,7 +108,7 @@ const ProductImageGallery = () => {
 
       {/* Image Zoom Modal */}
       <ImageZoom
-        images={productImages}
+        images={images}
         initialIndex={zoomInitialIndex}
         isOpen={isZoomOpen}
         onClose={() => setIsZoomOpen(false)}

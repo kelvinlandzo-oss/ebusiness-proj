@@ -1,6 +1,7 @@
 import { X, Minus, Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 
 interface CartItem {
   id: number;
@@ -20,10 +21,23 @@ interface ShoppingBagProps {
 }
 
 const ShoppingBag = ({ isOpen, onClose, cartItems, updateQuantity, onViewFavorites }: ShoppingBagProps) => {
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isOpen]);
+
   if (!isOpen) return null;
 
   const subtotal = cartItems.reduce((sum, item) => {
-    const price = parseFloat(item.price.replace('€', '').replace(',', ''));
+    const priceStr = item.price.replace(/[^\d.]/g, '');
+    const price = parseFloat(priceStr) || 0;
     return sum + (price * item.quantity);
   }, 0);
 
@@ -50,7 +64,7 @@ const ShoppingBag = ({ isOpen, onClose, cartItems, updateQuantity, onViewFavorit
         </div>
         
         {/* Content */}
-        <div className="flex-1 flex flex-col p-6">
+        <div className="flex-1 flex flex-col p-6 overflow-hidden">
           {/* Mobile favorites toggle - only show on mobile */}
           {onViewFavorites && (
             <div className="md:hidden mb-6 pb-6 border-b border-border">
@@ -76,7 +90,7 @@ const ShoppingBag = ({ isOpen, onClose, cartItems, updateQuantity, onViewFavorit
           ) : (
             <>
               {/* Cart items */}
-              <div className="flex-1 overflow-y-auto space-y-6 mb-6">
+              <div className="flex-1 overflow-y-auto space-y-6 mb-6 pr-2 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
                 {cartItems.map((item) => (
                   <div key={item.id} className="flex gap-4">
                     <div className="w-20 h-20 bg-muted/10 rounded-lg overflow-hidden">
@@ -121,10 +135,10 @@ const ShoppingBag = ({ isOpen, onClose, cartItems, updateQuantity, onViewFavorit
               </div>
               
               {/* Subtotal and checkout */}
-              <div className="border-t border-border pt-6 space-y-4">
+              <div className="border-t border-border pt-6 space-y-4 shrink-0 mt-auto bg-background">
                 <div className="flex justify-between items-center">
                   <span className="text-sm font-light text-foreground">Subtotal</span>
-                  <span className="text-sm font-medium text-foreground">€{subtotal.toLocaleString('en-EU', { minimumFractionDigits: 2 })}</span>
+                  <span className="text-sm font-medium text-foreground">GH₵{subtotal.toLocaleString('en-US', { minimumFractionDigits: 2 })}</span>
                 </div>
                 
                 <p className="text-xs text-muted-foreground">
