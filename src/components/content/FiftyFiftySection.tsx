@@ -8,7 +8,7 @@ const FiftyFiftySection = () => {
           <Link to="/category/dresses" className="block">
             <div className="w-full aspect-square mb-3 overflow-hidden">
               <img 
-                src="https://images.unsplash.com/photo-1595889951946-c74c6f7ad1db" 
+                src="/images/casual-dress.png" 
                 alt="Casual dresses collection" 
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
               />
@@ -28,7 +28,7 @@ const FiftyFiftySection = () => {
           <Link to="/category/outerwear" className="block">
             <div className="w-full aspect-square mb-3 overflow-hidden">
               <img 
-                src="https://images.unsplash.com/photo-1551028719-00167b16ebc5" 
+                src="/images/premium-outerwear.png" 
                 alt="Premium outerwear" 
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
               />

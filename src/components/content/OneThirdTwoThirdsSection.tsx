@@ -8,7 +8,7 @@ const OneThirdTwoThirdsSection = () => {
           <Link to="/category/tops" className="block">
             <div className="w-full h-[500px] lg:h-[800px] mb-3 overflow-hidden">
               <img 
-                src="https://images.unsplash.com/photo-1525572614472-0ff3a63fff71" 
+                src="/images/elegant-blouses.png" 
                 alt="Elegant blouse collection" 
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
               />
@@ -28,7 +28,7 @@ const OneThirdTwoThirdsSection = () => {
           <Link to="/category/dresses" className="block">
             <div className="w-full h-[500px] lg:h-[800px] mb-3 overflow-hidden">
               <img 
-                src="https://images.unsplash.com/photo-1595777707802-5b5f7fce8550" 
+                src="/images/sophisticated-dresses.png" 
                 alt="Sophisticated dresses collection" 
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
               />

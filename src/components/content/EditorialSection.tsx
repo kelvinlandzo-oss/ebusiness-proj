@@ -18,7 +18,7 @@ const EditorialSection = () => {
         
         <div className="order-first md:order-last">
           <div className="w-full aspect-square overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64" alt="Linea founders - creating sustainable fashion" className="w-full h-full object-cover" />
+            <img src="/images/editorial-founders.png" alt="Linea founders - creating sustainable fashion" className="w-full h-full object-cover" />
           </div>
         </div>
       </div>

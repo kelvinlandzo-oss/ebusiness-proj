@@ -3,7 +3,7 @@ const LargeHero = () => {
     <section className="w-full mb-16 px-6">
       <div className="w-full aspect-[16/9] mb-3 overflow-hidden">
         <img 
-          src="https://images.unsplash.com/photo-1542272604-787c62d465d1" 
+          src="/images/large-hero.png" 
           alt="Fashion collection showcase" 
           className="w-full h-full object-cover"
         />
