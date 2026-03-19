@@ -71,7 +71,7 @@ const Sustainability = () => {
               <div className="space-y-4">
                 <h3 className="text-lg font-light text-foreground">Take-Back Program</h3>
                 <p className="text-muted-foreground">
-                  Return your worn LINEA pieces to us. We repair, resell, or responsibly recycle them, keeping textiles out of landfills.
+                  Return your worn Cloth pieces to us. We repair, resell, or responsibly recycle them, keeping textiles out of landfills.
                 </p>
               </div>
             </div>

@@ -5,14 +5,6 @@ import {
 } from "@/components/ui/carousel";
 import { Card, CardContent } from "@/components/ui/card";
 import { Link } from "react-router-dom";
-import pantheonImage from "@/assets/pantheon.jpg";
-import eclipseImage from "@/assets/eclipse.jpg";
-import haloImage from "@/assets/halo.jpg";
-import obliqueImage from "@/assets/oblique.jpg";
-import lintelImage from "@/assets/lintel.jpg";
-import shadowlineImage from "@/assets/shadowline.jpg";
-import organicEarring from "@/assets/organic-earring.png";
-import linkBracelet from "@/assets/link-bracelet.png";
 
 interface ColorOption {
   name: string;
@@ -39,7 +31,7 @@ const products: Product[] = [
     name: "Classic Cotton T-Shirt",
     category: "Tops",
     price: "GH₵85",
-    image: pantheonImage,
+    image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab",
     fabric: "Cotton",
     sizes: ["XS", "S", "M", "L", "XL"],
     colors: [
@@ -56,7 +48,7 @@ const products: Product[] = [
     name: "Classic Blue Jeans",
     category: "Bottoms",
     price: "GH₵320",
-    image: eclipseImage,
+    image: "https://images.unsplash.com/photo-1542272604-787c62d465d1",
     fabric: "Cotton Blend",
     sizes: ["XS", "S", "M", "L", "XL"],
     colors: [
@@ -71,7 +63,7 @@ const products: Product[] = [
     name: "Casual Day Dress",
     category: "Dresses",
     price: "GH₵280",
-    image: haloImage,
+    image: "https://images.unsplash.com/photo-1595889951946-c74c6f7ad1db",
     fabric: "Cotton",
     sizes: ["XS", "S", "M", "L", "XL"],
     colors: [
@@ -88,7 +80,7 @@ const products: Product[] = [
     name: "Cotton Blazer",
     category: "Outerwear",
     price: "GH₵420",
-    image: obliqueImage,
+    image: "https://images.unsplash.com/photo-1591047990979-856eb60639c4",
     fabric: "Cotton",
     sizes: ["XS", "S", "M", "L", "XL"],
     colors: [
@@ -103,7 +95,7 @@ const products: Product[] = [
     name: "Wool Sweater",
     category: "Tops",
     price: "GH₵280",
-    image: lintelImage,
+    image: "https://images.unsplash.com/photo-1543163521-9effc05b9f54",
     fabric: "Wool",
     sizes: ["XS", "S", "M", "L", "XL"],
     colors: [
@@ -113,13 +105,14 @@ const products: Product[] = [
     ],
     fit: "regular",
     neckline: "Crew",
+    isNew: true,
   },
   {
     id: 15,
     name: "Elegant Cocktail Dress",
     category: "Dresses",
     price: "GH₵520",
-    image: shadowlineImage,
+    image: "https://images.unsplash.com/photo-1572804419762-99192248c385",
     fabric: "Polyester",
     sizes: ["XS", "S", "M", "L"],
     colors: [

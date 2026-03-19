@@ -7,8 +7,6 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Checkbox } from "@/components/ui/checkbox";
-import pantheonImage from "@/assets/pantheon.jpg";
-import eclipseImage from "@/assets/eclipse.jpg";
 
 const Checkout = () => {
   const [showDiscountInput, setShowDiscountInput] = useState(false);
@@ -50,18 +48,18 @@ const Checkout = () => {
   const [cartItems, setCartItems] = useState([
     {
       id: 1,
-      name: "Pantheon Ring",
-      price: "€2,450",
+      name: "Classic Cotton T-Shirt",
+      price: "GH₵85",
       quantity: 1,
-      image: pantheonImage,
-      size: "54 EU / 7 US"
+      image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab",
+      size: "M"
     },
     {
-      id: 2,
-      name: "Eclipse Earrings", 
-      price: "€1,850",
+      id: 7,
+      name: "Classic Blue Jeans", 
+      price: "GH₵320",
       quantity: 1,
-      image: eclipseImage
+      image: "https://images.unsplash.com/photo-1542272604-787c62d465d1"
     }
   ]);
 

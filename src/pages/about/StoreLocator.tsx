@@ -9,21 +9,21 @@ import AboutSidebar from "../../components/about/AboutSidebar";
 const StoreLocator = () => {
   const stores = [
     {
-      name: "LINEA Madison Avenue",
+      name: "Cloth Madison Avenue",
       address: "789 Madison Avenue, New York, NY 10065",
       phone: "+1 (212) 555-0123",
       hours: "Mon-Sat: 10AM-8PM, Sun: 12PM-6PM",
       services: ["Personal Shopping", "Custom Design", "Repairs", "Appraisals"]
     },
     {
-      name: "LINEA Beverly Hills",
+      name: "Cloth Beverly Hills",
       address: "456 Rodeo Drive, Beverly Hills, CA 90210",
       phone: "+1 (310) 555-0456",
       hours: "Mon-Sat: 10AM-8PM, Sun: 12PM-6PM",
       services: ["Personal Shopping", "Custom Design", "VIP Suites", "Repairs"]
     },
     {
-      name: "LINEA SoHo",
+      name: "Cloth SoHo",
       address: "123 Spring Street, New York, NY 10012",
       phone: "+1 (212) 555-0789",
       hours: "Mon-Sat: 11AM-8PM, Sun: 12PM-7PM",
@@ -43,9 +43,9 @@ const StoreLocator = () => {
         <main className="w-full lg:w-[70vw] lg:ml-auto px-6">
         <PageHeader 
           title="Store Locator" 
-          subtitle="Visit us in person for a personalized jewelry experience"
+          subtitle="Visit us in person for a personalized clothing experience"
         />
-        
+
         <ContentSection title="Interactive Store Map">
           <StoreMap />
         </ContentSection>
@@ -93,7 +93,7 @@ const StoreLocator = () => {
         <ContentSection title="Private Appointments">
           <div className="space-y-6">
             <p className="text-lg text-muted-foreground leading-relaxed">
-              Experience personalized service with a private appointment. Our jewelry consultants will guide you through our collections, help with custom designs, and provide expert advice in a comfortable, private setting.
+              Experience personalized service with a private appointment. Our style consultants will guide you through our collections, help with custom sizing, and provide expert advice in a comfortable, private setting.
             </p>
             
             <div className="grid md:grid-cols-3 gap-8 mt-12">
@@ -129,7 +129,7 @@ const StoreLocator = () => {
           <div className="bg-muted/10 rounded-lg p-8">
             <h3 className="text-xl font-light text-foreground mb-4">Can't visit in person?</h3>
             <p className="text-muted-foreground mb-6">
-              Book a virtual consultation with one of our jewelry experts. We'll showcase pieces via video call, 
+              Book a virtual consultation with one of our style experts. We'll showcase pieces via video call, 
               answer your questions, and help you make the perfect selection from the comfort of your home.
             </p>
             <Button variant="outline" className="rounded-none">

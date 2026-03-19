@@ -21,9 +21,9 @@ const CustomerCare = () => {
         <main className="w-full lg:w-[70vw] lg:ml-auto px-6">
         <PageHeader 
           title="Customer Care" 
-          subtitle="We're here to help you with all your jewelry needs"
+          subtitle="We're here to help you with all your clothing needs"
         />
-        
+
         <ContentSection title="Contact Information">
           <div className="grid md:grid-cols-3 gap-8">
             <div className="space-y-4">
@@ -33,7 +33,7 @@ const CustomerCare = () => {
             </div>
             <div className="space-y-4">
               <h3 className="text-lg font-light text-foreground">Email</h3>
-              <p className="text-muted-foreground">care@lineajewelry.com</p>
+              <p className="text-muted-foreground">care@cloth.com</p>
               <p className="text-sm text-muted-foreground">Response within 24 hours</p>
             </div>
             <div className="space-y-4">
@@ -68,25 +68,25 @@ const CustomerCare = () => {
 
             <AccordionItem value="warranty" className="border border-border rounded-lg px-6">
               <AccordionTrigger className="text-left hover:no-underline">
-                What warranty do you offer on your jewelry?
+                What warranty do you offer on your clothing?
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground">
-                All LINEA jewelry comes with a lifetime warranty against manufacturing defects. This includes free repairs for normal wear and tear, stone tightening, and professional cleaning.
+                All Cloth pieces come with a lifetime warranty against manufacturing defects. This includes free repairs for normal wear and tear, reinforcement, and professional cleaning.
               </AccordionContent>
             </AccordionItem>
 
             <AccordionItem value="sizing" className="border border-border rounded-lg px-6">
               <AccordionTrigger className="text-left hover:no-underline">
-                Can I resize my jewelry after purchase?
+                Can I alter my clothing after purchase?
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground">
-                Yes, we offer free ring resizing within 60 days of purchase (up to 2 sizes). Additional resizing is available for a service fee. Some designs cannot be resized due to their construction.
+                Yes, we offer free alterations within 60 days of purchase (up to 2 sizes). Additional alterations are available for a service fee. Some designs cannot be altered due to their construction.
               </AccordionContent>
             </AccordionItem>
 
             <AccordionItem value="care" className="border border-border rounded-lg px-6">
               <AccordionTrigger className="text-left hover:no-underline">
-                How should I care for my LINEA jewelry?
+                How should I care for my Cloth pieces?
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground">
                 Store pieces separately in soft pouches, avoid contact with chemicals and cosmetics, and clean gently with a soft cloth. We recommend professional cleaning every 6-12 months.
@@ -95,10 +95,10 @@ const CustomerCare = () => {
 
             <AccordionItem value="authentication" className="border border-border rounded-lg px-6">
               <AccordionTrigger className="text-left hover:no-underline">
-                How can I verify the authenticity of my jewelry?
+                How can I verify the authenticity of my clothing?
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground">
-                Every LINEA piece comes with a certificate of authenticity and is hallmarked. You can verify authenticity on our website using your unique piece number or contact our customer care team.
+                Every Cloth piece comes with a care guide and authenticity tag. You can verify authenticity on our website using your unique piece number or contact our customer care team.
               </AccordionContent>
             </AccordionItem>
           </Accordion>

@@ -1,5 +1,3 @@
-import circularCollection from "@/assets/circular-collection.png";
-import organicEarring from "@/assets/organic-earring.png";
 import { Link } from "react-router-dom";
 
 const OneThirdTwoThirdsSection = () => {
@@ -7,41 +5,41 @@ const OneThirdTwoThirdsSection = () => {
     <section className="w-full mb-16 px-6">
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div className="lg:col-span-1">
-          <Link to="/category/rings" className="block">
+          <Link to="/category/tops" className="block">
             <div className="w-full h-[500px] lg:h-[800px] mb-3 overflow-hidden">
               <img 
-                src={organicEarring} 
-                alt="Artisan crafted jewelry" 
+                src="https://images.unsplash.com/photo-1525572614472-0ff3a63fff71" 
+                alt="Elegant blouse collection" 
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
               />
             </div>
           </Link>
           <div className="">
             <h3 className="text-sm font-normal text-foreground mb-1">
-              Artisan Craft
+              Elegant Blouses
             </h3>
             <p className="text-sm font-light text-foreground">
-              Handcrafted pieces with meticulous attention to detail
+              Premium silk and refined fabrics for sophisticated style
             </p>
           </div>
         </div>
 
         <div className="lg:col-span-2">
-          <Link to="/category/necklaces" className="block">
+          <Link to="/category/dresses" className="block">
             <div className="w-full h-[500px] lg:h-[800px] mb-3 overflow-hidden">
               <img 
-                src={circularCollection} 
-                alt="Circular jewelry collection" 
+                src="https://images.unsplash.com/photo-1595777707802-5b5f7fce8550" 
+                alt="Sophisticated dresses collection" 
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
               />
             </div>
           </Link>
           <div className="">
             <h3 className="text-sm font-normal text-foreground mb-1">
-              Circular Elements
+              Sophisticated Dresses
             </h3>
             <p className="text-sm font-light text-foreground">
-              Geometric perfection meets contemporary minimalism
+              Timeless elegance with contemporary flair for every occasion
             </p>
           </div>
         </div>

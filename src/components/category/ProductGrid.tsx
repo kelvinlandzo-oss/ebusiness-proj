@@ -1,14 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Link } from "react-router-dom";
 import Pagination from "./Pagination";
-import pantheonImage from "@/assets/pantheon.jpg";
-import eclipseImage from "@/assets/eclipse.jpg";
-import haloImage from "@/assets/halo.jpg";
-import obliqueImage from "@/assets/oblique.jpg";
-import lintelImage from "@/assets/lintel.jpg";
-import shadowlineImage from "@/assets/shadowline.jpg";
-import organicEarring from "@/assets/organic-earring.png";
-import linkBracelet from "@/assets/link-bracelet.png";
+import type { Filters } from "@/pages/Category";
 
 interface ColorOption {
   name: string;
@@ -29,6 +22,20 @@ interface Product {
   isNew?: boolean;
 }
 
+// Helper function to parse price from string "GH₵85"
+const parsePrice = (priceStr: string): number => {
+  const match = priceStr.match(/\d+/);
+  return match ? parseInt(match[0]) : 0;
+};
+
+// Helper function to check if price is in range
+const isPriceInRange = (price: number, range: string): boolean => {
+  if (range === "GH₵50 - GH₵300") return price >= 50 && price <= 300;
+  if (range === "GH₵300 - GH₵800") return price >= 300 && price <= 800;
+  if (range === "GH₵800 - GH₵2,000") return price >= 800 && price <= 2000;
+  return false;
+};
+
 // Extended product list for category page - Clothing Store
 const products: Product[] = [
   // TOPS (1-6)
@@ -37,7 +44,7 @@ const products: Product[] = [
     name: "Classic Cotton T-Shirt",
     category: "Tops",
     price: "GH₵85",
-    image: pantheonImage,
+    image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab",
     fabric: "Cotton",
     sizes: ["XS", "S", "M", "L", "XL"],
     colors: [
@@ -54,7 +61,7 @@ const products: Product[] = [
     name: "Silk Blend Blouse",
     category: "Tops",
     price: "GH₵220",
-    image: eclipseImage,
+    image: "https://images.unsplash.com/photo-1525572614472-0ff3a63fff71",
     fabric: "Silk",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
     colors: [
@@ -69,7 +76,7 @@ const products: Product[] = [
     name: "Wool Sweater",
     category: "Tops",
     price: "GH₵280",
-    image: haloImage,
+    image: "https://images.unsplash.com/photo-1543163521-9effc05b9f54",
     fabric: "Wool",
     sizes: ["XS", "S", "M", "L", "XL"],
     colors: [
@@ -86,7 +93,7 @@ const products: Product[] = [
     name: "Linen Summer Top",
     category: "Tops",
     price: "GH₵120",
-    image: obliqueImage,
+    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64",
     fabric: "Linen",
     sizes: ["XS", "S", "M", "L"],
     colors: [
@@ -102,7 +109,7 @@ const products: Product[] = [
     name: "Formal Polyester Shirt",
     category: "Tops",
     price: "GH₵150",
-    image: lintelImage,
+    image: "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e",
     fabric: "Polyester",
     sizes: ["XS", "S", "M", "L", "XL"],
     colors: [
@@ -118,7 +125,7 @@ const products: Product[] = [
     name: "Organic Cotton Tank",
     category: "Tops",
     price: "GH₵75",
-    image: shadowlineImage,
+    image: "https://images.unsplash.com/photo-1575521520904-742c3f6b60ca",
     fabric: "Organic Cotton",
     sizes: ["XS", "S", "M", "L", "XL"],
     colors: [
@@ -135,7 +142,7 @@ const products: Product[] = [
     name: "Classic Blue Jeans",
     category: "Bottoms",
     price: "GH₵320",
-    image: pantheonImage,
+    image: "https://images.unsplash.com/photo-1542272604-787c62d465d1",
     fabric: "Cotton Blend",
     sizes: ["XS", "S", "M", "L", "XL"],
     colors: [
@@ -150,7 +157,7 @@ const products: Product[] = [
     name: "Tailored Trousers",
     category: "Bottoms",
     price: "GH₵250",
-    image: eclipseImage,
+    image: "https://images.unsplash.com/photo-1591195853828-11db59a44f6b",
     fabric: "Polyester",
     sizes: ["XS", "S", "M", "L", "XL"],
     colors: [
@@ -165,7 +172,7 @@ const products: Product[] = [
     name: "Casual Chinos",
     category: "Bottoms",
     price: "GH₵180",
-    image: haloImage,
+    image: "https://images.unsplash.com/photo-1602293589411-07134e71a2a9",
     fabric: "Cotton",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
     colors: [
@@ -180,7 +187,7 @@ const products: Product[] = [
     name: "Linen Shorts",
     category: "Bottoms",
     price: "GH₵140",
-    image: obliqueImage,
+    image: "https://images.unsplash.com/photo-1591195853591-40cf7dd5ffd4",
     fabric: "Linen",
     sizes: ["XS", "S", "M", "L", "XL"],
     colors: [
@@ -195,7 +202,7 @@ const products: Product[] = [
     name: "Leather Skirt",
     category: "Bottoms",
     price: "GH₵450",
-    image: lintelImage,
+    image: "https://images.unsplash.com/photo-1577794534644-17a7bab87f4e",
     fabric: "Faux Leather",
     sizes: ["XS", "S", "M", "L"],
     colors: [
@@ -209,7 +216,7 @@ const products: Product[] = [
     name: "Pleated Midi Skirt",
     category: "Bottoms",
     price: "GH₵200",
-    image: shadowlineImage,
+    image: "https://images.unsplash.com/photo-1597589243854-2c4ee3a96342",
     fabric: "Polyester",
     sizes: ["XS", "S", "M", "L", "XL"],
     colors: [
@@ -226,7 +233,7 @@ const products: Product[] = [
     name: "Casual Day Dress",
     category: "Dresses",
     price: "GH₵280",
-    image: pantheonImage,
+    image: "https://images.unsplash.com/photo-1595889951946-c74c6f7ad1db",
     fabric: "Cotton",
     sizes: ["XS", "S", "M", "L", "XL"],
     colors: [
@@ -243,7 +250,7 @@ const products: Product[] = [
     name: "Flowing Maxi Dress",
     category: "Dresses",
     price: "GH₵380",
-    image: eclipseImage,
+    image: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04",
     fabric: "Silk",
     sizes: ["XS", "S", "M", "L", "XL"],
     colors: [
@@ -258,7 +265,7 @@ const products: Product[] = [
     name: "Elegant Cocktail Dress",
     category: "Dresses",
     price: "GH₵520",
-    image: haloImage,
+    image: "https://images.unsplash.com/photo-1572804419762-99192248c385",
     fabric: "Polyester",
     sizes: ["XS", "S", "M", "L"],
     colors: [
@@ -273,7 +280,7 @@ const products: Product[] = [
     name: "Summer Sundress",
     category: "Dresses",
     price: "GH₵160",
-    image: obliqueImage,
+    image: "https://images.unsplash.com/photo-1566174053391-be6e7a681b95",
     fabric: "Cotton",
     sizes: ["XS", "S", "M", "L", "XL"],
     colors: [
@@ -289,7 +296,7 @@ const products: Product[] = [
     name: "Office Work Dress",
     category: "Dresses",
     price: "GH₵290",
-    image: lintelImage,
+    image: "https://images.unsplash.com/photo-1564257631626-f90000647b55",
     fabric: "Polyester Blend",
     sizes: ["XS", "S", "M", "L", "XL"],
     colors: [
@@ -304,7 +311,7 @@ const products: Product[] = [
     name: "Bohemian Print Dress",
     category: "Dresses",
     price: "GH₵210",
-    image: shadowlineImage,
+    image: "https://images.unsplash.com/photo-1612336307429-8a88e8d08dbb",
     fabric: "Cotton",
     sizes: ["XS", "S", "M", "L", "XL"],
     colors: [
@@ -321,7 +328,7 @@ const products: Product[] = [
     name: "Cotton Blazer",
     category: "Outerwear",
     price: "GH₵420",
-    image: pantheonImage,
+    image: "https://images.unsplash.com/photo-1591047990979-856eb60639c4",
     fabric: "Cotton",
     sizes: ["XS", "S", "M", "L", "XL"],
     colors: [
@@ -336,7 +343,7 @@ const products: Product[] = [
     name: "Denim Jacket",
     category: "Outerwear",
     price: "GH₵280",
-    image: eclipseImage,
+    image: "https://images.unsplash.com/photo-1551028719-00167b16ebc5",
     fabric: "Cotton",
     sizes: ["XS", "S", "M", "L", "XL"],
     colors: [
@@ -350,7 +357,7 @@ const products: Product[] = [
     name: "Wool Coat",
     category: "Outerwear",
     price: "GH₵680",
-    image: haloImage,
+    image: "https://images.unsplash.com/photo-1539533057144-d814f0f4e5da",
     fabric: "Wool",
     sizes: ["XS", "S", "M", "L", "XL"],
     colors: [
@@ -365,7 +372,7 @@ const products: Product[] = [
     name: "Casual Baseball Jacket",
     category: "Outerwear",
     price: "GH₵190",
-    image: obliqueImage,
+    image: "https://images.unsplash.com/photo-1551482260-ff92038f1994",
     fabric: "Polyester",
     sizes: ["XS", "S", "M", "L", "XL"],
     colors: [
@@ -380,7 +387,7 @@ const products: Product[] = [
     name: "Leather Jacket",
     category: "Outerwear",
     price: "GH₵850",
-    image: lintelImage,
+    image: "https://images.unsplash.com/photo-1551028719-00167b16ebc5",
     fabric: "Faux Leather",
     sizes: ["XS", "S", "M", "L", "XL"],
     colors: [
@@ -394,7 +401,7 @@ const products: Product[] = [
     name: "Lightweight Cardigan",
     category: "Outerwear",
     price: "GH₵240",
-    image: shadowlineImage,
+    image: "https://images.unsplash.com/photo-1591195849676-8530823e5b6d",
     fabric: "Merino",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
     colors: [
@@ -406,47 +413,112 @@ const products: Product[] = [
   },
 ];
 
-const ProductGrid = () => {
+const ProductGrid = ({ filters }: { filters: Filters }) => {
+  // Apply filters to products
+  let filteredProducts = products.filter((product) => {
+    // Category filter
+    if (filters.categories.length > 0 && !filters.categories.includes(product.category)) {
+      return false;
+    }
+
+    // Price filter
+    if (filters.priceRanges.length > 0) {
+      const productPrice = parsePrice(product.price);
+      const matchesPriceRange = filters.priceRanges.some(range => isPriceInRange(productPrice, range));
+      if (!matchesPriceRange) return false;
+    }
+
+    // Fabric filter
+    if (filters.fabrics.length > 0 && !filters.fabrics.includes(product.fabric)) {
+      return false;
+    }
+
+    // Fit filter
+    if (filters.fits.length > 0 && !filters.fits.includes(product.fit)) {
+      return false;
+    }
+
+    // Neckline filter
+    if (filters.necklines.length > 0 && product.neckline && !filters.necklines.includes(product.neckline)) {
+      return false;
+    }
+
+    return true;
+  });
+
+  // Apply sorting
+  switch (filters.sortBy) {
+    case "price-low":
+      filteredProducts.sort((a, b) => parsePrice(a.price) - parsePrice(b.price));
+      break;
+    case "price-high":
+      filteredProducts.sort((a, b) => parsePrice(b.price) - parsePrice(a.price));
+      break;
+    case "newest":
+      filteredProducts.sort((a, b) => {
+        const aNew = a.isNew ? 0 : 1;
+        const bNew = b.isNew ? 0 : 1;
+        return aNew - bNew;
+      });
+      break;
+    case "name":
+      filteredProducts.sort((a, b) => a.name.localeCompare(b.name));
+      break;
+    default: // featured
+      // Keep original order
+      break;
+  }
+
   return (
     <section className="w-full px-6 mb-16">
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
-          {products.map((product) => (
-            <Link key={product.id} to={`/product/${product.id}`}>
-              <Card 
-                className="border-none shadow-none bg-transparent group cursor-pointer"
-              >
-                <CardContent className="p-0">
-                  <div className="aspect-square mb-3 overflow-hidden bg-muted/10 relative">
-                    <img
-                      src={product.image}
-                      alt={product.name}
-                      className="w-full h-full object-cover transition-all duration-300 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-black/[0.03]"></div>
-                    {product.isNew && (
-                      <div className="absolute top-2 left-2 px-2 py-1 text-xs font-medium text-black">
-                        NEW
-                      </div>
-                    )}
-                  </div>
-                  <div className="space-y-1">
-                    <p className="text-sm font-light text-foreground">
-                      {product.category}
-                    </p>
-                    <div className="flex justify-between items-center">
-                      <h3 className="text-sm font-medium text-foreground">
-                        {product.name}
-                      </h3>
-                      <p className="text-sm font-light text-foreground">
-                        {product.price}
-                      </p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </Link>
-          ))}
+      {filteredProducts.length === 0 ? (
+        <div className="col-span-full text-center py-16">
+          <p className="text-sm font-light text-muted-foreground">
+            No products found. Try adjusting your filters.
+          </p>
         </div>
+      ) : (
+        <>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+            {filteredProducts.map((product) => (
+              <Link key={product.id} to={`/product/${product.id}`}>
+                <Card 
+                  className="border-none shadow-none bg-transparent group cursor-pointer"
+                >
+                  <CardContent className="p-0">
+                    <div className="aspect-square mb-3 overflow-hidden bg-muted/10 relative">
+                      <img
+                        src={product.image}
+                        alt={product.name}
+                        className="w-full h-full object-cover transition-all duration-300 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-black/[0.03]"></div>
+                      {product.isNew && (
+                        <div className="absolute top-2 left-2 px-2 py-1 text-xs font-medium text-black">
+                          NEW
+                        </div>
+                      )}
+                    </div>
+                    <div className="space-y-1">
+                      <p className="text-sm font-light text-foreground">
+                        {product.category}
+                      </p>
+                      <div className="flex justify-between items-center">
+                        <h3 className="text-sm font-medium text-foreground">
+                          {product.name}
+                        </h3>
+                        <p className="text-sm font-light text-foreground">
+                          {product.price}
+                        </p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </Link>
+            ))}
+          </div>
+        </>
+      )}
       
       <Pagination />
     </section>

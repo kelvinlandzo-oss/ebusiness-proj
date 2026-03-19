@@ -4,9 +4,6 @@ import { Link } from "react-router-dom";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import ShoppingBag from "./ShoppingBag";
-import pantheonImage from "@/assets/pantheon.jpg";
-import eclipseImage from "@/assets/eclipse.jpg";
-import haloImage from "@/assets/halo.jpg";
 
 interface CartItem {
   id: number;
@@ -30,7 +27,7 @@ const Navigation = () => {
       id: 1,
       name: "Classic Cotton T-Shirt",
       price: "GH₵85",
-      image: pantheonImage,
+      image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab",
       quantity: 1,
       category: "Tops"
     },
@@ -38,7 +35,7 @@ const Navigation = () => {
       id: 7,
       name: "Classic Blue Jeans",
       price: "GH₵320", 
-      image: eclipseImage,
+      image: "https://images.unsplash.com/photo-1542272604-787c62d465d1",
       quantity: 1,
       category: "Bottoms"
     },
@@ -46,7 +43,7 @@ const Navigation = () => {
       id: 13,
       name: "Casual Day Dress",
       price: "GH₵280",
-      image: haloImage, 
+      image: "https://images.unsplash.com/photo-1595889951946-c74c6f7ad1db", 
       quantity: 1,
       category: "Dresses"
     }
@@ -69,11 +66,11 @@ const Navigation = () => {
   // Preload dropdown images for faster display
   useEffect(() => {
     const imagesToPreload = [
-      "/rings-collection.png",
-      "/earrings-collection.png", 
-      "/arcus-bracelet.png",
-      "/span-bracelet.png",
-      "/founders.png"
+      "https://images.unsplash.com/photo-1523381210434-271142786834",
+      "https://images.unsplash.com/photo-1508345228323-935bc60bd47b", 
+      "https://images.unsplash.com/photo-1595889951946-c74c6f7ad1db",
+      "https://images.unsplash.com/photo-1572804419762-99192248c385",
+      "https://images.unsplash.com/photo-1507679799987-c73ba5cf6d51"
     ];
     
     imagesToPreload.forEach(src => {
@@ -102,8 +99,8 @@ const Navigation = () => {
         "Outerwear"
       ],
       images: [
-        { src: "/rings-collection.png", alt: "Tops Collection", label: "Tops" },
-        { src: "/earrings-collection.png", alt: "Dresses Collection", label: "Dresses" }
+        { src: "https://images.unsplash.com/photo-1523381210434-271142786834", alt: "Tops Collection", label: "Tops" },
+        { src: "https://images.unsplash.com/photo-1595889951946-c74c6f7ad1db", alt: "Dresses Collection", label: "Dresses" }
       ]
     },
     { 
@@ -117,8 +114,8 @@ const Navigation = () => {
         "New Designers"
       ],
       images: [
-        { src: "/arcus-bracelet.png", alt: "New Arrivals", label: "New Arrivals" },
-        { src: "/span-bracelet.png", alt: "Spring Collection", label: "Spring Collection" }
+        { src: "https://images.unsplash.com/photo-1572804419762-99192248c385", alt: "New Arrivals", label: "New Arrivals" },
+        { src: "https://images.unsplash.com/photo-1591047990979-856eb60639c4", alt: "Spring Collection", label: "Spring Collection" }
       ]
     },
     { 
@@ -132,7 +129,7 @@ const Navigation = () => {
         "Store Locator"
       ],
       images: [
-        { src: "/founders.png", alt: "Company Founders", label: "Read our story" }
+        { src: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40", alt: "Company Story", label: "Read our story" }
       ]
     }
   ];

@@ -6,10 +6,31 @@ import CategoryHeader from "../components/category/CategoryHeader";
 import FilterSortBar from "../components/category/FilterSortBar";
 import ProductGrid from "../components/category/ProductGrid";
 
+export interface Filters {
+  categories: string[];
+  priceRanges: string[];
+  fabrics: string[];
+  fits: string[];
+  necklines: string[];
+  sortBy: string;
+}
+
 const Category = () => {
   const { category } = useParams();
   const [searchParams] = useSearchParams();
   const [filtersOpen, setFiltersOpen] = useState(false);
+  const [filters, setFilters] = useState<Filters>({
+    categories: [],
+    priceRanges: [],
+    fabrics: [],
+    fits: [],
+    necklines: [],
+    sortBy: "featured"
+  });
+
+  const handleFilterChange = (newFilters: Filters) => {
+    setFilters(newFilters);
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -24,9 +45,11 @@ const Category = () => {
           filtersOpen={filtersOpen}
           setFiltersOpen={setFiltersOpen}
           itemCount={24}
+          onFilterChange={handleFilterChange}
+          currentFilters={filters}
         />
         
-        <ProductGrid />
+        <ProductGrid filters={filters} />
       </main>
       
       <Footer />
